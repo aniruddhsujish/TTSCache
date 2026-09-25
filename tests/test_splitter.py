@@ -7,7 +7,7 @@ def test_splits_two_sentences():
 
 def test_split_ignores_abbreviations():
     result = split_sentences("Please visit Dr. X. He is available.", "en")
-    assert result == ["Please visit Dr. X", "He is available."]
+    assert result == ["Please visit Dr. X.", "He is available."]
 
 def test_splits_hindi_sentences():
     result = split_sentences("आपका ऑर्डर आ गया। धन्यवाद।", "hi")
