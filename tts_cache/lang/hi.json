@@ -1,0 +1,8 @@
+{
+  "currency": {
+    "canonical": "रुपये",
+    "variants": ["₹", "Rs.", "Rs", "रु.", "रु", "INR"]
+  },
+  "terminators": ["।", "॥", ".", "?", "!"],
+  "abbreviations": ["डॉ.", "पं.", "श्रीमती.", "कृ.", "Dr.", "Mr.", "Mrs.", "Ms.", "No.", "Sr.", "Jr.", "Rs.", "रु."]
+}
