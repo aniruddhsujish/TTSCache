@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from tts_cache.keys import VoiceProfile
+
 
 @dataclass
 class WordTimestamp:
@@ -7,22 +9,15 @@ class WordTimestamp:
     start: float
     end: float
 
-@dataclass 
+
+@dataclass
 class TTSResult:
     audio: bytes
     sample_rate: int
     timestamps: list[WordTimestamp]
 
+
 class TTSBackend(ABC):
 
     @abstractmethod
-    async def synthesize(
-        self,
-        text: str,
-        language: str,
-        voice: str,
-        model: str,
-        settings: dict[str, object]
-    ) -> TTSResult:
-        ...
-
+    async def synthesize(self, text: str, profile: VoiceProfile) -> TTSResult: ...

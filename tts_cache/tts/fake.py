@@ -3,6 +3,7 @@ import asyncio
 import hashlib
 from tts_cache.tts.base import TTSBackend, TTSResult, WordTimestamp
 
+
 class FakeTTS(TTSBackend):
 
     def __init__(self, delay=0.2, failure_rate=0.0, sample_rate=16000, seed=42):
@@ -12,7 +13,7 @@ class FakeTTS(TTSBackend):
         self.rng = random.Random(seed)
         self.calls = 0
 
-    async def synthesize(self, text, language, voice, model, settings):
+    async def synthesize(self, text, profile):
         self.calls += 1
 
         await asyncio.sleep(self.delay)
@@ -41,5 +42,6 @@ class FakeTTS(TTSBackend):
 
         audio = b"".join(chunks)
 
-        return TTSResult(audio=audio, sample_rate=self.sample_rate, timestamps=timestamps)
-        
+        return TTSResult(
+            audio=audio, sample_rate=self.sample_rate, timestamps=timestamps
+        )

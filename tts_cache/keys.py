@@ -2,6 +2,7 @@ import hashlib
 import json
 from dataclasses import dataclass, field
 
+
 @dataclass(frozen=True)
 class VoiceProfile:
     language: str
@@ -10,6 +11,7 @@ class VoiceProfile:
     output_format: str
     settings: dict = field(default_factory=dict)
     namespace: str = "shared"
+
 
 def build_key(text: str, profile: VoiceProfile) -> str:
     payload = {

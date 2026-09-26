@@ -1,0 +1,9 @@
+.venv/
+
+__pycache__/
+
+.cache_store/
+
+tests/__pycache__/
+
+tts_cache/__pycache__/
