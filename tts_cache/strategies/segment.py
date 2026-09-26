@@ -5,6 +5,7 @@ from tts_cache.storage import TieredStorage
 from tts_cache.tts.base import TTSBackend, TTSResult
 from tts_cache.counter import RequestCounter
 from tts_cache.coalescing import Coalescer
+from tts_cache.quality import passes_quality
 
 
 class SegmentStrategy:
@@ -39,7 +40,7 @@ class SegmentStrategy:
                 result = await self.coalescer.run(
                     key, lambda: self.tts.synthesize(sentence, profile)
                 )
-                if self.counter.should_admit(key):
+                if self.counter.should_admit(key) and passes_quality(result, sentence):
                     self.storage.put(key, result)
                 results.append(result)
 

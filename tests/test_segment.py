@@ -5,6 +5,7 @@ from tts_cache.strategies.segment import SegmentStrategy
 from tts_cache.tts.fake import FakeTTS
 from tts_cache.counter import RequestCounter
 from tts_cache.coalescing import Coalescer
+from tts_cache.tts.base import TTSBackend, TTSResult
 
 PROFILE = VoiceProfile(language="en", voice="v1", model="m1", output_format="pcm_16000")
 
@@ -63,3 +64,28 @@ async def test_cached_only_after_five_distinct_user(tmp_path):
 
     await strategy.get_audio("Your order has been shipped.", PROFILE, f"user5")
     assert tts.calls == 5
+
+
+# --------- Empty Audio blocked by QC gate ---------------#
+class EmptyAudioTTS(TTSBackend):
+    def __init__(self):
+        self.calls = 0
+
+    async def synthesize(self, text, profile):
+        self.calls += 1
+        return TTSResult(audio=b"", sample_rate=16000, timestamps=[])
+
+
+@pytest.mark.asyncio
+async def test_bad_audio_is_never_cached(tmp_path):
+    tts = EmptyAudioTTS()
+    storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
+    counter = RequestCounter(secret=b"test", threshold=1)
+    strategy = SegmentStrategy(tts, storage, counter, Coalescer())
+
+    await strategy.get_audio("Your order has shipped.", PROFILE, "user1")
+    await strategy.get_audio("Your order has shipped.", PROFILE, "user2")
+
+    assert (
+        tts.calls == 2
+    )  # second request should be a miss since first entry fails QC gate
