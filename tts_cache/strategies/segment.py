@@ -4,16 +4,22 @@ from tts_cache.splitter import split_sentences
 from tts_cache.storage import TieredStorage
 from tts_cache.tts.base import TTSBackend, TTSResult
 from tts_cache.counter import RequestCounter
+from tts_cache.coalescing import Coalescer
 
 
 class SegmentStrategy:
 
     def __init__(
-        self, tts: TTSBackend, storage: TieredStorage, counter: RequestCounter
+        self,
+        tts: TTSBackend,
+        storage: TieredStorage,
+        counter: RequestCounter,
+        coalescer: Coalescer,
     ):
         self.tts = tts
         self.storage = storage
         self.counter = counter
+        self.coalescer = coalescer
 
     async def get_audio(
         self, text: str, profile: VoiceProfile, user_id: str
@@ -30,7 +36,9 @@ class SegmentStrategy:
             if found is not None:
                 results.append(found)
             else:
-                result = await self.tts.synthesize(sentence, profile)
+                result = await self.coalescer.run(
+                    key, lambda: self.tts.synthesize(sentence, profile)
+                )
                 if self.counter.should_admit(key):
                     self.storage.put(key, result)
                 results.append(result)

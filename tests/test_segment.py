@@ -4,6 +4,7 @@ from tts_cache.storage import FileTier, MemoryTier, TieredStorage
 from tts_cache.strategies.segment import SegmentStrategy
 from tts_cache.tts.fake import FakeTTS
 from tts_cache.counter import RequestCounter
+from tts_cache.coalescing import Coalescer
 
 PROFILE = VoiceProfile(language="en", voice="v1", model="m1", output_format="pcm_16000")
 
@@ -12,7 +13,8 @@ def make_strategy(tmp_path):
     tts = FakeTTS(delay=0)
     storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
     counter = RequestCounter(secret=b"test", threshold=1)
-    return SegmentStrategy(tts, storage, counter), tts
+    coalescer = Coalescer()
+    return SegmentStrategy(tts, storage, counter, coalescer), tts
 
 
 @pytest.mark.asyncio
@@ -52,7 +54,8 @@ async def test_cached_only_after_five_distinct_user(tmp_path):
     tts = FakeTTS(delay=0)
     storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
     counter = RequestCounter(secret=b"test", threshold=5)
-    strategy = SegmentStrategy(tts, storage, counter)
+    coalescer = Coalescer()
+    strategy = SegmentStrategy(tts, storage, counter, coalescer)
 
     for i in range(5):
         await strategy.get_audio("Your order has been shipped.", PROFILE, f"user{i}")
