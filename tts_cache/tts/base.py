@@ -21,3 +21,7 @@ class TTSBackend(ABC):
 
     @abstractmethod
     async def synthesize(self, text: str, profile: VoiceProfile) -> TTSResult: ...
+
+
+class TTSError(Exception):
+    """Raised when the TTS provider fails"""

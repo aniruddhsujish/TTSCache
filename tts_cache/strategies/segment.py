@@ -11,9 +11,7 @@ class SegmentStrategy:
         self.tts = tts
         self.storage = storage
 
-    async def synthesize_response(
-        self, text: str, profile: VoiceProfile
-    ) -> list[TTSResult]:
+    async def get_audio(self, text: str, profile: VoiceProfile) -> list[TTSResult]:
         normalized = normalize(text, profile.language)
         sentences = split_sentences(normalized, profile.language)
 

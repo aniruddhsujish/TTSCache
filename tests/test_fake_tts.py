@@ -1,5 +1,6 @@
 import pytest
 import asyncio
+from tts_cache.tts.base import TTSError
 from tts_cache.tts.fake import FakeTTS
 from tts_cache.keys import VoiceProfile
 
@@ -29,7 +30,7 @@ async def test_count_increments_after_each_run():
 @pytest.mark.asyncio
 async def test_synthesize_fails_when_failure_rate_is_1():
     tts = FakeTTS(delay=0, failure_rate=1.0)
-    with pytest.raises(RuntimeError, match="fake TTS failure"):
+    with pytest.raises(TTSError, match="fake TTS failure"):
         await tts.synthesize("hello", PROFILE)
 
 

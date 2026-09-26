@@ -1,7 +1,7 @@
 import random
 import asyncio
 import hashlib
-from tts_cache.tts.base import TTSBackend, TTSResult, WordTimestamp
+from tts_cache.tts.base import TTSBackend, TTSError, TTSResult, WordTimestamp
 
 
 class FakeTTS(TTSBackend):
@@ -19,7 +19,7 @@ class FakeTTS(TTSBackend):
         await asyncio.sleep(self.delay)
 
         if self.rng.random() < self.failure_rate:
-            raise RuntimeError("fake TTS failure")
+            raise TTSError("fake TTS failure")
 
         words = text.split()
 
