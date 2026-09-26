@@ -13,9 +13,11 @@ class CachePipeline:
         self.strategy = strategy
         self.tts = tts
 
-    async def speak(self, text: str, profile: VoiceProfile) -> list[TTSResult]:
+    async def speak(
+        self, text: str, profile: VoiceProfile, user_id: str
+    ) -> list[TTSResult]:
         try:
-            return await self.strategy.get_audio(text, profile)
+            return await self.strategy.get_audio(text, profile, user_id)
         except TTSError:
             raise
         except Exception:
