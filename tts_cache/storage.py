@@ -3,25 +3,47 @@ import logging
 from dataclasses import asdict
 from pathlib import Path
 from collections import OrderedDict
+import time
+from typing import Callable
 from tts_cache.tts.base import TTSResult, WordTimestamp
+from dataclasses import dataclass
 
 log = logging.getLogger(__name__)
 
 
+@dataclass
+class CacheEntry:
+    result: TTSResult
+    created_at: float
+
+
 class MemoryTier:
 
-    def __init__(self, max_items: int = 500):
+    def __init__(
+        self,
+        max_items: int = 500,
+        max_age_days: float = 30,
+        clock: Callable[[], float] = time.time,
+    ):
         self.max_items = max_items
-        self.items = OrderedDict()
+        self.max_age_days = max_age_days
+        self.clock = clock
+        self.items: OrderedDict[str, CacheEntry] = OrderedDict()
 
-    def get(self, key: str) -> TTSResult | None:
-        if key not in self.items:
+    def get(self, key: str) -> CacheEntry | None:
+        entry = self.items.get(key)
+        if entry is None:
             return None
+
+        if self.clock() - entry.created_at > self.max_age_days * 24 * 60 * 60:
+            del self.items[key]
+            return None
+
         self.items.move_to_end(key)
         return self.items[key]
 
-    def put(self, key: str, value: TTSResult) -> None:
-        self.items[key] = value
+    def put(self, key: str, entry: CacheEntry) -> None:
+        self.items[key] = entry
         self.items.move_to_end(key)
         if len(self.items) > self.max_items:
             self.items.popitem(last=False)
@@ -29,58 +51,94 @@ class MemoryTier:
 
 class FileTier:
 
-    def __init__(self, root: str = ".cache_store"):
+    def __init__(
+        self,
+        root: str = ".cache_store",
+        max_age_days=30,
+        clock: Callable[[], float] = time.time,
+    ):
         self.root = Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
+        self.max_age_days = max_age_days
+        self.clock = clock
 
     def _paths(self, key: str) -> tuple[Path, Path]:
         return self.root / f"{key}.pcm", self.root / f"{key}.json"
 
-    def put(self, key: str, value: TTSResult) -> None:
+    def _is_expired(self, meta) -> bool:
+        return self.clock() - meta["created_at"] > self.max_age_days * 24 * 60 * 60
+
+    def put(self, key: str, entry: CacheEntry) -> None:
         audio_path, meta_path = self._paths(key)
-        audio_path.write_bytes(value.audio)
+        audio_path.write_bytes(entry.result.audio)
         meta = {
-            "sample_rate": value.sample_rate,
-            "timestamps": [asdict(ts) for ts in value.timestamps],
+            "sample_rate": entry.result.sample_rate,
+            "timestamps": [asdict(ts) for ts in entry.result.timestamps],
+            "created_at": entry.created_at,
         }
         meta_path.write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
 
-    def get(self, key: str) -> TTSResult | None:
+    def get(self, key: str) -> CacheEntry | None:
         audio_path, meta_path = self._paths(key)
         if not meta_path.exists():
             return None
         meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+        if self._is_expired(meta):
+            meta_path.unlink(missing_ok=True)
+            audio_path.unlink(missing_ok=True)
+            return None
+
         timestamps = [WordTimestamp(**d) for d in meta["timestamps"]]
-        return TTSResult(
-            audio=audio_path.read_bytes(),
-            sample_rate=meta["sample_rate"],
-            timestamps=timestamps,
+        return CacheEntry(
+            result=TTSResult(
+                audio=audio_path.read_bytes(),
+                sample_rate=meta["sample_rate"],
+                timestamps=timestamps,
+            ),
+            created_at=meta["created_at"],
         )
+
+    def prune_expired(self) -> None:
+        for meta_path in self.root.glob("*.json"):
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            if self._is_expired(meta):
+                audio_path = meta_path.with_suffix(".pcm")
+                meta_path.unlink(missing_ok=True)
+                audio_path.unlink(missing_ok=True)
 
 
 class TieredStorage:
 
-    def __init__(self, memory: MemoryTier, files: FileTier):
+    def __init__(
+        self,
+        memory: MemoryTier,
+        files: FileTier,
+        clock: Callable[[], float] = time.time,
+    ):
         self.memory = memory
         self.files = files
+        self.clock = clock
 
     def get(self, key: str) -> TTSResult | None:
         try:
-            result = self.memory.get(key)
-            if result is not None:
-                return result
+            entry = self.memory.get(key)
+            if entry is not None:
+                return entry.result
 
-            result = self.files.get(key)
-            if result is not None:
-                self.memory.put(key, result)  # promote to the memory
-            return result
+            entry = self.files.get(key)
+            if entry is not None:
+                self.memory.put(key, entry)  # promote to the memory
+                return entry.result
+            return None
         except Exception:
             log.exception("storage get failed for key %s", key)
             return None
 
     def put(self, key: str, value: TTSResult) -> None:
         try:
-            self.files.put(key, value)
-            self.memory.put(key, value)
+            entry = CacheEntry(result=value, created_at=self.clock())
+            self.files.put(key, entry)
+            self.memory.put(key, entry)
         except Exception:
             log.exception("storage put failed for key %s", key)
