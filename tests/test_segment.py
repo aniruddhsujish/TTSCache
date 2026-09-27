@@ -6,6 +6,7 @@ from tts_cache.tts.fake import FakeTTS
 from tts_cache.counter import RequestCounter
 from tts_cache.coalescing import Coalescer
 from tts_cache.tts.base import TTSBackend, TTSResult
+from tts_cache.metrics import Metrics, Outcome
 
 PROFILE = VoiceProfile(language="en", voice="v1", model="m1", output_format="pcm_16000")
 
@@ -15,7 +16,8 @@ def make_strategy(tmp_path):
     storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
     counter = RequestCounter(secret=b"test", threshold=1)
     coalescer = Coalescer()
-    return SegmentStrategy(tts, storage, counter, coalescer), tts
+    metrics = Metrics()
+    return SegmentStrategy(tts, storage, counter, coalescer, metrics), tts
 
 
 @pytest.mark.asyncio
@@ -56,7 +58,8 @@ async def test_cached_only_after_five_distinct_user(tmp_path):
     storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
     counter = RequestCounter(secret=b"test", threshold=5)
     coalescer = Coalescer()
-    strategy = SegmentStrategy(tts, storage, counter, coalescer)
+    metrics = Metrics()
+    strategy = SegmentStrategy(tts, storage, counter, coalescer, metrics)
 
     for i in range(5):
         await strategy.get_audio("Your order has been shipped.", PROFILE, f"user{i}")
@@ -81,7 +84,7 @@ async def test_bad_audio_is_never_cached(tmp_path):
     tts = EmptyAudioTTS()
     storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
     counter = RequestCounter(secret=b"test", threshold=1)
-    strategy = SegmentStrategy(tts, storage, counter, Coalescer())
+    strategy = SegmentStrategy(tts, storage, counter, Coalescer(), Metrics())
 
     await strategy.get_audio("Your order has shipped.", PROFILE, "user1")
     await strategy.get_audio("Your order has shipped.", PROFILE, "user2")
@@ -89,3 +92,20 @@ async def test_bad_audio_is_never_cached(tmp_path):
     assert (
         tts.calls == 2
     )  # second request should be a miss since first entry fails QC gate
+
+
+@pytest.mark.asyncio
+async def test_metrics_track_savings(tmp_path):
+    tts = FakeTTS(delay=0)
+    storage = TieredStorage(MemoryTier(), FileTier(root=str(tmp_path)))
+    metrics = Metrics()
+    strategy = SegmentStrategy(
+        tts, storage, RequestCounter(secret=b"test", threshold=1), Coalescer(), metrics
+    )
+
+    await strategy.get_audio("Your order has shipped.", PROFILE, "user1")
+    await strategy.get_audio("Your order has shipped.", PROFILE, "user2")
+
+    assert metrics.outcomes[Outcome.MISS_STORED] == 1
+    assert metrics.outcomes[Outcome.HIT] == 1
+    assert metrics.savings_ratio() == 0.5
