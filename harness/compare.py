@@ -15,9 +15,9 @@ from functools import cache, partial
 from pathlib import Path
 
 from harness.generate_dataset import DEFAULT_OUTPUT, Request, load
-from harness.varied_traffic import meaning_key
 from tts_cache.normalize import normalize
 from tts_cache.splitter import split_sentences
+from tts_cache.strategies.template import find_variables, make_template
 from tts_cache.coalescing import Coalescer
 from tts_cache.counter import RequestCounter
 from tts_cache.keys import VoiceProfile
@@ -100,6 +100,13 @@ async def run_one_strategy(
             m["count"] for m in row["semantic_matches"] if m["correct"] is False
         )
     return row
+
+
+def meaning_key(sentence: str) -> str:
+    """What a sentence is cached and semantically matched as: its template if it has slots, else itself."""
+    words = sentence.split()
+    positions = find_variables(words)
+    return make_template(words, positions)[0] if positions else sentence
 
 
 def meaning_index(requests: list[Request]) -> dict[str, set[str]]:

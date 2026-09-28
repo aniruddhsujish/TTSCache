@@ -5,6 +5,7 @@ DEFAULT_ABBREVIATIONS = []
 
 
 def split_sentences(text: str, language: str) -> list[str]:
+    """Splits the text into sentences for Segment caching. Supports different terminator characters based on language configs and abbreviation recognition support."""
     rules = load_lang_rules(language) or {}
     terminators = rules.get("terminators", DEFAULT_TERMINATORS)
     abbreviations = rules.get("abbreviations", DEFAULT_ABBREVIATIONS)

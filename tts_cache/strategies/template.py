@@ -25,7 +25,7 @@ BYTES_PER_SAMPLE = 2
 
 
 def slot_type(word: str) -> str | None:
-    """ "'DATE', 'TIME' or 'Num' if this word is a variable"""
+    """Returns 'DATE', 'TIME' or 'NUM' if this word is a variable"""
     core = word.rstrip(TRAILING_PUNCTUATION)
     for name, pattern in SLOT_PATTERNS:
         if pattern.match(core):
@@ -66,10 +66,12 @@ def make_template(words: list[str], positions: list[int]) -> tuple[str, list[str
 
 
 def to_byte(seconds: float, sample_rate: int) -> int:
+    """Returns the byte value at a given second in the audio byte stream"""
     return round(seconds * sample_rate) * BYTES_PER_SAMPLE
 
 
 def duration(result: TTSResult) -> float:
+    """Returns total duration of the audio clip"""
     return len(result.audio) / (result.sample_rate * BYTES_PER_SAMPLE)
 
 
@@ -144,6 +146,7 @@ class TemplateStrategy(SegmentStrategy):
     async def get_audio(
         self, text: str, profile: VoiceProfile, user_id: str
     ) -> list[TTSResult]:
+        """The main entry point to the strategy, gets audio for a given text"""
         normalized = normalize(text, profile.language)
         sentences = self._split_into_cache_units(normalized, profile.language)
         return [await self._resolve_sentence(s, profile, user_id) for s in sentences]
@@ -151,6 +154,7 @@ class TemplateStrategy(SegmentStrategy):
     async def _resolve_sentence(
         self, sentence: str, profile: VoiceProfile, user_id: str
     ) -> TTSResult:
+        """Inner function that runs the template caching logic to fetch the result"""
         words = sentence.split()
         positions = find_variables(words)
 

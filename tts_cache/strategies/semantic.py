@@ -39,6 +39,7 @@ class SemanticTemplateStrategy(TemplateStrategy):
         return build_key("[profile]", profile)
 
     def _on_stored(self, text: str, profile: VoiceProfile) -> None:
+        """Stores number-free sentences and templates in the in-memory index that vector similarity is run against"""
         # index only number-free sentences and templates; never bare values like "4321"
         if (
             find_variables(text.split()) is None
@@ -49,6 +50,7 @@ class SemanticTemplateStrategy(TemplateStrategy):
     async def _resolve_sentence(
         self, sentence: str, profile: VoiceProfile, user_id: str
     ) -> TTSResult:
+        """Tries to run semantic caching if conditions are met (less than 3 variables in template), if not falls back to basic template caching"""
         words = sentence.split()
         positions = find_variables(words)
         too_many_numbers = positions is None and any(slot_type(w) for w in words)
@@ -76,6 +78,7 @@ class SemanticTemplateStrategy(TemplateStrategy):
     async def _serve_semantic(
         self, query, values, sentence, profile, user_id
     ) -> TTSResult | None:
+        """Runs the semantic lookup and caching logic, finds a similar sentence/ template for a sentence and returns it"""
         # Values are placed by position. With two slots of the same type, a paraphrase can
         # swap their roles ("balance {NUM}, due {NUM}" vs "due {NUM}, balance {NUM}") and NLI
         # can't tell, since it sees identical placeholders. Never risk a swapped number.

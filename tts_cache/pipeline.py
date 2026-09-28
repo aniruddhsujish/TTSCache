@@ -16,6 +16,7 @@ class CachePipeline:
     async def speak(
         self, text: str, profile: VoiceProfile, user_id: str
     ) -> list[TTSResult]:
+        """The function that runs the entire flow for a particular strategy. Error handling around strategy.get_audio function"""
         try:
             return await self.strategy.get_audio(text, profile, user_id)
         except TTSError:

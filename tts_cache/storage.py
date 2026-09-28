@@ -31,6 +31,9 @@ class MemoryTier:
         self.items: OrderedDict[str, CacheEntry] = OrderedDict()
 
     def get(self, key: str) -> CacheEntry | None:
+        """Gets a cache entry from Memory tier. This is quick access for hot clips
+
+        This tier is LRU with a max number of entries. Get refreshes the entry"""
         entry = self.items.get(key)
         if entry is None:
             return None
@@ -43,6 +46,7 @@ class MemoryTier:
         return self.items[key]
 
     def put(self, key: str, entry: CacheEntry) -> None:
+        """Saves an entry to memory tier, Evicts the Least recently used entry if memory is full"""
         self.items[key] = entry
         self.items.move_to_end(key)
         if len(self.items) > self.max_items:
@@ -63,12 +67,15 @@ class FileTier:
         self.clock = clock
 
     def _paths(self, key: str) -> tuple[Path, Path]:
+        """Returns the audio file path and metadata file path"""
         return self.root / f"{key}.pcm", self.root / f"{key}.json"
 
     def _is_expired(self, meta) -> bool:
+        """Checks if the file is expired (aka. more than max_age_days old)"""
         return self.clock() - meta["created_at"] > self.max_age_days * 24 * 60 * 60
 
     def put(self, key: str, entry: CacheEntry) -> None:
+        """Saves entry to file storage. Virtually limitless so no eviction"""
         audio_path, meta_path = self._paths(key)
         audio_path.write_bytes(entry.result.audio)
         meta = {
@@ -79,6 +86,7 @@ class FileTier:
         meta_path.write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
 
     def get(self, key: str) -> CacheEntry | None:
+        """Fetches entry from file storage"""
         audio_path, meta_path = self._paths(key)
         if not meta_path.exists():
             return None
@@ -100,6 +108,7 @@ class FileTier:
         )
 
     def prune_expired(self) -> None:
+        """Removes entries from file storage that are expired"""
         for meta_path in self.root.glob("*.json"):
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
             if self._is_expired(meta):
@@ -121,6 +130,7 @@ class TieredStorage:
         self.clock = clock
 
     def get(self, key: str) -> TTSResult | None:
+        """First tries to fetch from memory, if not found falls back to File Storage"""
         try:
             entry = self.memory.get(key)
             if entry is not None:
@@ -136,6 +146,7 @@ class TieredStorage:
             return None
 
     def put(self, key: str, value: TTSResult) -> None:
+        """Saves an entry to Memory and File storage"""
         try:
             entry = CacheEntry(result=value, created_at=self.clock())
             self.files.put(key, entry)

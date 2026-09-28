@@ -13,12 +13,12 @@ logic, with a stubbed TTS and a harness that compares strategies on the same mul
 
 | Strategy | TTS characters saved |
 |---|---:|
-| Standard audio caching (exact match on the whole response) | 9.1% |
-| **Segment-level caching** (per sentence) | **49.4%** |
-| **Template caching** (numbers, dates and times as slots) | **66.3%** |
-| Semantic template caching (embedding + NLI gate) | 66.5%, with 37 wrong matches |
+| Standard audio caching (exact match on the whole response) | 16.8% |
+| **Segment-level caching** (per sentence) | **48.3%** |
+| **Template caching** (numbers, dates and times as slots) | **67.0%** |
+| Semantic template caching (embedding + NLI gate) | 67.1%, with 17 wrong matches |
 
-Template caching is the recommended setup. Semantic caching adds 0.2 points but sometimes plays the wrong sentence,
+Template caching is the recommended setup. Semantic caching adds 0.1 points but sometimes plays the wrong sentence,
 so it is built and measured but not recommended live ([why](ARCHITECTURE.md#5-semantic-template-caching-built-and-tested-not-recommended-live)).
 
 ![Savings vs admission threshold](results/savings_vs_threshold.png)
@@ -53,16 +53,18 @@ Y" decision, marked `ok` or `WRONG`.
 
 ## The dataset
 
-`data/traffic.jsonl` is the exact traffic behind the results. It has 13,000 requests:
-- 5,000 base requests with a few fixed wordings per reply.
-- 8,000 high-variance requests. These include several phrasings per intent and near-misses side by side (shipped /
-  delivered, on / by a date). They also have realistic values (alphanumeric order IDs, ₹ / Rs. / INR amounts,
-  written dates), customer names and free-form sentences.
-- About 64% English, 32% Hindi (including some Hinglish), and 4% Kannada. Kannada has no language rules file, to
-  show that an unconfigured language still works.
+`data/traffic.jsonl` is the exact traffic behind the results: 13,000 agent responses from 2,000 users, made to look
+like an LLM support agent's output.
+- 30% are canned replies sent word for word (hold, greeting, didn't catch that, transfer); the rest are
+  composed from openers, intents, free-form sentences and closers.
+- Several phrasings per intent, with near-misses side by side (shipped / delivered, on / by a date).
+- Realistic values (alphanumeric order IDs, ₹ / Rs. / INR amounts, written dates), customer names and free-form
+  sentences that rarely repeat.
+- 60% English, 34% Hindi (including some Hinglish), 6% Kannada. Kannada has no language rules file, to show that
+  an unconfigured language still works.
 - Every sentence carries a meaning label.
 
-Regenerate it with `python -m harness.generate_dataset` (fixed seeds, same output).
+Regenerate it with `python -m harness.generate_dataset` (fixed seed, same output).
 
 ## Repository layout
 
@@ -73,7 +75,7 @@ tts_cache/             the library
   tts/                 TTS interface + stub
   normalize.py, splitter.py, keys.py, counter.py, storage.py,
   coalescing.py, quality.py, metrics.py, semantic.py, pipeline.py
-harness/               dataset generation (generate_dataset.py, varied_traffic.py) and compare.py
+harness/               generate_dataset.py (traffic + labels) and compare.py (runs and grades strategies)
 experiments/           semantic matcher evaluation and labeled pairs
 data/, results/        the traffic and the harness output
 tests/

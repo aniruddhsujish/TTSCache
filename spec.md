@@ -49,8 +49,7 @@ tts_cache/
   tts/fake.py             FakeTTS: fake audio + timestamps, delay, failure rate, cancellable
   strategies/baseline.py, segment.py, template.py, semantic.py
 harness/
-  generate_dataset.py     base traffic generator; writes base + varied traffic → data/traffic.jsonl
-  varied_traffic.py       high-variance traffic, meaning labels for every sentence (base traffic included)
+  generate_dataset.py     synthetic traffic with a meaning label per sentence → data/traffic.jsonl
   compare.py              runs every strategy × threshold, grades semantic matches → tables, results.json, chart
 experiments/
   semantic_eval.py        grades similarity + NLI against labeled pairs
@@ -116,7 +115,7 @@ tests/
 - `savings_ratio = chars_saved / chars_requested`; `hit` and `semantic_hit` count as saved.
 - Template and semantic hits record only the fixed characters; each slot value records its own outcome, so
   characters requested equal the sentence length. Sentence-level strategies therefore request the same total;
-  the baseline requests ~1.4% more, because a whole response also includes the spaces between its sentences.
+  the baseline requests ~1.3% more, because a whole response also includes the spaces between its sentences.
 
 ### 4.9 Fallback (pipeline)
 - `CachePipeline.speak(text, profile, user_id)` calls the strategy.
@@ -171,15 +170,16 @@ Before falling through to §5.2, when the exact sentence and its template would 
   per-category matches at 0.85; NLI confidence sweep; wrong pairs by confidence; latency.
 - Decision rule: a setting qualifies only with **0 wrong hits and meaningfully > 0 safe hits**.
 - Result on the pairs: qualifies at confidence ≥ 0.95 (57/175 safe, 0/241 wrong). Cutoff chosen on the same set.
-- Result on the traffic (§7, threshold 5): 989 semantic hits from 16 distinct pairs; 2 pairs were wrong by label,
-  **37 wrong hits** ("delivered" served as "shipped" in Hindi; "on {DATE}" served as "by {DATE}"), for +0.2 points
+- Result on the traffic (§7, threshold 5): 642 semantic hits from 17 distinct pairs; 2 pairs were wrong by label,
+  **17 wrong hits** ("delivered" served as "shipped" in Hindi; "on {DATE}" served as "by {DATE}"), for +0.1 points
   of savings. The pairs-set result did not hold on unseen traffic, so semantic matching is not recommended live.
 
 ## 7. Harness
-- Dataset (`python -m harness.generate_dataset`, fixed seeds): 5,000 base requests interleaved with 8,000
-  high-variance requests: several wordings per intent, near-miss intents side by side, alphanumeric order IDs,
-  varied currency and date formats, customer names, free-form sentences. ~64% English, ~32% Hindi, ~4% Kannada
-  (no rules file, to exercise the language-agnostic defaults). Each request carries one meaning label per sentence.
+- Dataset (`python -m harness.generate_dataset`, fixed seed): 13,000 requests from 2,000 users. 30% are canned
+  replies sent word for word (whole-response repeats); the rest are composed. Several wordings
+  per intent, near-miss intents side by side, alphanumeric order IDs, varied currency and date formats, customer
+  names, free-form sentences. ~60% English, ~34% Hindi, ~6% Kannada (no rules file, to exercise the
+  language-agnostic defaults). Each request carries one meaning label per sentence.
 - Loads `data/traffic.jsonl`; for each strategy and threshold `[1, 2, 5, 10, 20]`, runs all requests through a fresh
   cache with `FakeTTS(delay=0)`; headline at threshold 5. A voice profile is built for any language in the traffic.
 - Grading: every semantic `(query, matched)` pair is checked against the meaning labels (`ok` / `WRONG` / `?` if

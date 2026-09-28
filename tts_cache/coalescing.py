@@ -17,6 +17,7 @@ class Coalescer:
     async def run(
         self, key: str, make_call: Callable[[], Awaitable[TTSResult]]
     ) -> TTSResult:
+        """Runs the coalescing Leader/ Waiter logic"""
 
         # Waiter path: look for the same call in flight and wait for its result
         existing = self.in_flight.get(key)

@@ -6,10 +6,12 @@ BYTES_PER_SAMPLE = 2
 
 
 def duration_seconds(result: TTSResult) -> float:
+    """Returns duration of the audio sample"""
     return len(result.audio) / (result.sample_rate * 2)
 
 
 def passes_quality(result: TTSResult, text: str) -> bool:
+    """Basic quality pass before admission into the cache - checks that the audio isn't empty and the characters per second sits within a safe interval"""
     if not result.audio:
         return False
 

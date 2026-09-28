@@ -36,11 +36,13 @@ class SemanticMatcher:
         self.nli_calls = 0
 
     def _embed(self, text: str):
+        """Embeds a text using the SentenceTransformer model"""
         if text not in self._vectors:
             self._vectors[text] = self.embedder.encode(text, convert_to_tensor=True)
         return self._vectors[text]
 
     def _entail(self, premise: str, hypothesis: str) -> float:
+        """Checks the NLI model for probability that premise implies hypothesis"""
         if (premise, hypothesis) not in self._entailment:
             self.nli_calls += 1
             inputs = self.tokenizer(

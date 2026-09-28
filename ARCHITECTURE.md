@@ -10,12 +10,12 @@ Results on about 13,000 synthetic requests in English, Hindi and Kannada, with d
 
 | Strategy | TTS characters saved |
 |---|---|
-| Standard audio caching (exact match on the whole response) | 9.1% |
-| Segment-level caching (per sentence) | 49.4% |
-| Template caching (numbers, dates and times as slots) | 66.3% |
-| Semantic template caching | 66.5% (+0.2, with 37 wrong matches) |
+| Standard audio caching (exact match on the whole response) | 16.8% |
+| Segment-level caching (per sentence) | 48.3% |
+| Template caching (numbers, dates and times as slots) | 67.0% |
+| Semantic template caching | 67.1% (+0.1, with 17 wrong matches) |
 
-Segment-level caching saves more than 5× what standard caching does, and template caching adds another 17 points on top. Semantic caching barely helps and sometimes plays the wrong sentence, so I don't recommend running it live. It's better used offline to build a human-reviewed alias map.
+Segment-level caching saves almost 3× what standard caching does, and template caching adds another 19 points on top. Semantic caching barely helps and sometimes plays the wrong sentence, so I don't recommend running it live. It's better used offline to build a human-reviewed alias map.
 
 ## Assumptions
 
@@ -32,7 +32,7 @@ Segment-level caching saves more than 5× what standard caching does, and templa
 
 - **Different users, not a raw count.** A sentence one user hears many times is usually personal ("Your balance is ₹45,230"). Counting distinct users keeps those out of a shared cache and stops one caller or bot from forcing entries in. A raw count would save a little more, but it would admit exactly those sentences.
 - **One 7-day window.** Seven days covers weekly patterns, so steady but low-volume sentences still qualify, and it keeps the counter's memory bounded. Bursts don't need their own window, because admission is checked on every request: a sentence five users hear in the first minute of an outage gets cached in that minute. I first planned a separate one-hour window for bursts, then realised it was redundant with the same threshold.
-- **The threshold has a price.** At a threshold of 1, template caching saves 83.5%; at 5 it saves 66.3%. That gap is the cost of the privacy gate. It's overstated on a dataset this size, since each sentence only pays for its first few misses once, which matters far less at millions of requests.
+- **The threshold has a price.** At a threshold of 1, template caching saves 82.5%; at 5 it saves 67.0%. That gap is the cost of the privacy gate. It's overstated on a dataset this size, since each sentence only pays for its first few misses once, which matters far less at millions of requests.
 - The counter itself stores only HMAC hashes of the cache key and the user ID, never the text.
 
 ![Savings vs admission threshold](results/savings_vs_threshold.png)
@@ -61,9 +61,9 @@ Each sentence tries the cheapest correct option first. Only a sentence that miss
 
 Instead of caching whole responses, I cache each sentence. Agent responses are built from parts (a greeting, a body, a closing), and whole responses rarely repeat exactly, but their sentences do.
 
-This is the biggest single win: **49.4% vs 9.1%** on the same traffic. The two strategies differ only in how text is split into cache units, so the comparison is fair. It also fits streaming, where TTS already receives text one sentence at a time.
+This is the biggest single win: **48.3% vs 16.8%** on the same traffic. The two strategies differ only in how text is split into cache units, so the comparison is fair. It also fits streaming, where TTS already receives text one sentence at a time.
 
-Tradeoff: the voice resets a little at each sentence, and an old cached sentence can sound slightly different next to a newly synthesized one. Joins fall on natural pauses, which helps.
+Tradeoff: the voice resets a little at each sentence, and an old cached sentence can sound slightly different next to a newly synthesized one. Joins fall on natural pauses, which helps. It also makes more TTS calls than standard caching (9,733 vs 9,026 at threshold 5), because each missed sentence is its own call. Characters are what the provider bills, so cost still drops, but each call adds latency and per-request overhead.
 
 ### 2. Template caching
 
@@ -74,7 +74,7 @@ Tradeoff: the voice resets a little at each sentence, and an old cached sentence
 - The fixed parts are cut out of the first full synthesis using word timestamps, so there are no extra TTS calls, and the words were spoken in context.
 - If the exact sentence (number included) is already cached, that single clean clip is used instead.
 
-Result: **66.3%**, 16.9 points above segment-level caching, with fewer TTS calls (10,481 vs 10,969).
+Result: **67.0%**, 18.7 points above segment-level caching, with fewer TTS calls (9,247 vs 9,733).
 
 Tradeoff: every template hit has joins in the middle of a sentence. The stub can't tell me how that sounds, and some languages attach suffixes directly to numbers. So template caching should be switched on per language after a listening test. That switch is designed but not built.
 
@@ -93,11 +93,11 @@ The idea: if nothing is cached for "We have shipped your order 7788", play the c
 What I found:
 - **Similarity alone isn't safe.** "Money was transferred to your account" and "…from your account" score 0.987, higher than most real paraphrases.
 - On 416 labeled pairs (AI-generated, reviewed by me) in English, Hindi and Hinglish, the NLI gate made **0 wrong matches** at 95% confidence and caught a third of the true paraphrases.
-- On the traffic it added only **0.2 points**. It made 989 semantic hits from 16 distinct pairs, and 2 of those pairs were wrong, **37 wrong answers** in total. A Hindi "your order has been delivered" was played as "your order has been shipped", and "it should reach you on {date}" as "you should receive it by {date}".
+- On the traffic it added only **0.1 points**. It made 642 semantic hits from 17 distinct pairs, and 2 of those pairs were wrong, **17 wrong answers** in total. A Hindi "your order has been delivered" was played as "your order has been shipped", and "it should reach you on {date}" as "you should receive it by {date}".
 - The gain is small because the paraphrases were common enough to get cached on their own anyway. Gain would rise with higher variance in content of similar meaning that's only seen by a couple users.
 - Kannada, which the NLI model wasn't trained on, produced no semantic matches at all.
 
-So I'd use the same models **offline**: they propose paraphrase pairs, a person approves them, and the live system does a plain lookup. Reviewing 16 pairs takes a few minutes; a reviewer would approve the 14 good ones and reject the 2 bad ones quickly. The review effort grows with the number of distinct pairs, not with traffic. That gets the savings with no wrong answers and no added latency.
+So I'd use the same models **offline**: they propose paraphrase pairs, a person approves them, and the live system does a plain lookup. Reviewing 17 pairs takes a few minutes; a reviewer would approve the 15 good ones and reject the 2 bad ones quickly. The review effort grows with the number of distinct pairs, not with traffic. That gets the savings with no wrong answers and no added latency.
 
 Proposed rollout:
 
@@ -121,7 +121,7 @@ flowchart LR
     AM -.-> LK
 ```
 
-In the test traffic this would have meant reviewing 16 pairs: approving 14 and rejecting the two that caused all 37 wrong answers.
+In the test traffic this would have meant reviewing 17 pairs: approving 15 and rejecting the two that caused all 17 wrong answers.
 
 ## Cache key design
 
@@ -171,7 +171,7 @@ The real saving is that minus what the cache costs to run (storage, lookups, cou
 
 ## Monitoring
 
-**What's built:** every sentence records one outcome (hit, stored, below threshold, rejected by the quality check, or semantic hit) along with its character count, and the harness reports these per strategy. The semantic strategy also logs every "played X in place of Y" decision so a person can review them. That log, graded against the dataset's meaning labels, is how the 37 wrong matches above were found.
+**What's built:** every sentence records one outcome (hit, stored, below threshold, rejected by the quality check, or semantic hit) along with its character count, and the harness reports these per strategy. The semantic strategy also logs every "played X in place of Y" decision so a person can review them. That log, graded against the dataset's meaning labels, is how the 17 wrong matches above were found.
 
 **What I'd add in production** (not built): the same outcomes as metrics per language and namespace, extra miss reasons (expired, evicted, storage error), and alerts when storage errors rise, savings drop or quality rejections spike. Knowing *why* things miss is what makes a drop diagnosable: a model upgrade shows up as a wave of misses on sentences that used to hit, while a prompt change shows up as lots of new sentences below the threshold.
 

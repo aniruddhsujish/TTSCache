@@ -2,13 +2,13 @@
   {
     "strategy": "baseline",
     "threshold": 1,
-    "tts_calls": 9902,
-    "chars_requested": 1232539,
-    "chars_saved": 233573,
-    "savings_pct": 19.0,
+    "tts_calls": 8437,
+    "chars_requested": 1103858,
+    "chars_saved": 216751,
+    "savings_pct": 19.6,
     "outcomes": {
-      "hit": 3098,
-      "miss_stored": 9902,
+      "hit": 4563,
+      "miss_stored": 8437,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
@@ -17,14 +17,14 @@
   {
     "strategy": "baseline",
     "threshold": 2,
-    "tts_calls": 10652,
-    "chars_requested": 1232539,
-    "chars_saved": 170516,
-    "savings_pct": 13.8,
+    "tts_calls": 8743,
+    "chars_requested": 1103858,
+    "chars_saved": 198824,
+    "savings_pct": 18.0,
     "outcomes": {
-      "hit": 2348,
-      "miss_stored": 749,
-      "miss_below_threshold": 9903,
+      "hit": 4257,
+      "miss_stored": 306,
+      "miss_below_threshold": 8437,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -32,14 +32,14 @@
   {
     "strategy": "baseline",
     "threshold": 5,
-    "tts_calls": 11405,
-    "chars_requested": 1232539,
-    "chars_saved": 112735,
-    "savings_pct": 9.1,
+    "tts_calls": 9026,
+    "chars_requested": 1103858,
+    "chars_saved": 185140,
+    "savings_pct": 16.8,
     "outcomes": {
-      "hit": 1595,
-      "miss_stored": 173,
-      "miss_below_threshold": 11232,
+      "hit": 3974,
+      "miss_stored": 57,
+      "miss_below_threshold": 8969,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -47,14 +47,14 @@
   {
     "strategy": "baseline",
     "threshold": 10,
-    "tts_calls": 11925,
-    "chars_requested": 1232539,
-    "chars_saved": 74800,
-    "savings_pct": 6.1,
+    "tts_calls": 9198,
+    "chars_requested": 1103858,
+    "chars_saved": 177485,
+    "savings_pct": 16.1,
     "outcomes": {
-      "hit": 1075,
-      "miss_stored": 75,
-      "miss_below_threshold": 11850,
+      "hit": 3802,
+      "miss_stored": 28,
+      "miss_below_threshold": 9170,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -62,14 +62,14 @@
   {
     "strategy": "baseline",
     "threshold": 20,
-    "tts_calls": 12375,
-    "chars_requested": 1232539,
-    "chars_saved": 42651,
-    "savings_pct": 3.5,
+    "tts_calls": 9444,
+    "chars_requested": 1103858,
+    "chars_saved": 166757,
+    "savings_pct": 15.1,
     "outcomes": {
-      "hit": 625,
-      "miss_stored": 31,
-      "miss_below_threshold": 12344,
+      "hit": 3556,
+      "miss_stored": 22,
+      "miss_below_threshold": 9422,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -77,13 +77,13 @@
   {
     "strategy": "segment",
     "threshold": 1,
-    "tts_calls": 8364,
-    "chars_requested": 1215177,
-    "chars_saved": 726203,
-    "savings_pct": 59.8,
+    "tts_calls": 7773,
+    "chars_requested": 1089964,
+    "chars_saved": 602737,
+    "savings_pct": 55.3,
     "outcomes": {
-      "hit": 21998,
-      "miss_stored": 8364,
+      "hit": 19121,
+      "miss_stored": 7773,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
@@ -92,14 +92,14 @@
   {
     "strategy": "segment",
     "threshold": 2,
-    "tts_calls": 9217,
-    "chars_requested": 1215177,
-    "chars_saved": 683679,
-    "savings_pct": 56.3,
+    "tts_calls": 8414,
+    "chars_requested": 1089964,
+    "chars_saved": 575319,
+    "savings_pct": 52.8,
     "outcomes": {
-      "hit": 21145,
-      "miss_stored": 853,
-      "miss_below_threshold": 8364,
+      "hit": 18480,
+      "miss_stored": 641,
+      "miss_below_threshold": 7773,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -107,14 +107,14 @@
   {
     "strategy": "segment",
     "threshold": 5,
-    "tts_calls": 10969,
-    "chars_requested": 1215177,
-    "chars_saved": 600038,
-    "savings_pct": 49.4,
+    "tts_calls": 9733,
+    "chars_requested": 1089964,
+    "chars_saved": 526562,
+    "savings_pct": 48.3,
     "outcomes": {
-      "hit": 19393,
-      "miss_stored": 500,
-      "miss_below_threshold": 10469,
+      "hit": 17161,
+      "miss_stored": 381,
+      "miss_below_threshold": 9352,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -122,14 +122,14 @@
   {
     "strategy": "segment",
     "threshold": 10,
-    "tts_calls": 12734,
-    "chars_requested": 1215177,
-    "chars_saved": 526311,
-    "savings_pct": 43.3,
+    "tts_calls": 11198,
+    "chars_requested": 1089964,
+    "chars_saved": 475871,
+    "savings_pct": 43.7,
     "outcomes": {
-      "hit": 17628,
-      "miss_stored": 259,
-      "miss_below_threshold": 12475,
+      "hit": 15696,
+      "miss_stored": 244,
+      "miss_below_threshold": 10954,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -137,14 +137,14 @@
   {
     "strategy": "segment",
     "threshold": 20,
-    "tts_calls": 14274,
-    "chars_requested": 1215177,
-    "chars_saved": 473417,
+    "tts_calls": 12757,
+    "chars_requested": 1089964,
+    "chars_saved": 425413,
     "savings_pct": 39.0,
     "outcomes": {
-      "hit": 16088,
+      "hit": 14137,
       "miss_stored": 107,
-      "miss_below_threshold": 14167,
+      "miss_below_threshold": 12650,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -152,13 +152,13 @@
   {
     "strategy": "template",
     "threshold": 1,
-    "tts_calls": 7163,
-    "chars_requested": 1215177,
-    "chars_saved": 1014816,
-    "savings_pct": 83.5,
+    "tts_calls": 6244,
+    "chars_requested": 1089964,
+    "chars_saved": 899593,
+    "savings_pct": 82.5,
     "outcomes": {
-      "hit": 31025,
-      "miss_stored": 7163,
+      "hit": 27540,
+      "miss_stored": 6244,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
@@ -167,14 +167,14 @@
   {
     "strategy": "template",
     "threshold": 2,
-    "tts_calls": 8621,
-    "chars_requested": 1215177,
-    "chars_saved": 939285,
-    "savings_pct": 77.3,
+    "tts_calls": 7598,
+    "chars_requested": 1089964,
+    "chars_saved": 834234,
+    "savings_pct": 76.5,
     "outcomes": {
-      "hit": 29205,
-      "miss_stored": 1073,
-      "miss_below_threshold": 7548,
+      "hit": 25693,
+      "miss_stored": 922,
+      "miss_below_threshold": 6676,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -182,14 +182,14 @@
   {
     "strategy": "template",
     "threshold": 5,
-    "tts_calls": 10481,
-    "chars_requested": 1215177,
-    "chars_saved": 806235,
-    "savings_pct": 66.3,
+    "tts_calls": 9247,
+    "chars_requested": 1089964,
+    "chars_saved": 729765,
+    "savings_pct": 67.0,
     "outcomes": {
-      "hit": 26332,
-      "miss_stored": 436,
-      "miss_below_threshold": 10045,
+      "hit": 22982,
+      "miss_stored": 343,
+      "miss_below_threshold": 8904,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -197,14 +197,14 @@
   {
     "strategy": "template",
     "threshold": 10,
-    "tts_calls": 12148,
-    "chars_requested": 1215177,
-    "chars_saved": 693309,
-    "savings_pct": 57.1,
+    "tts_calls": 10697,
+    "chars_requested": 1089964,
+    "chars_saved": 630731,
+    "savings_pct": 57.9,
     "outcomes": {
-      "hit": 23619,
-      "miss_stored": 250,
-      "miss_below_threshold": 11898,
+      "hit": 20404,
+      "miss_stored": 247,
+      "miss_below_threshold": 10450,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -212,14 +212,14 @@
   {
     "strategy": "template",
     "threshold": 20,
-    "tts_calls": 13924,
-    "chars_requested": 1215177,
-    "chars_saved": 600775,
-    "savings_pct": 49.4,
+    "tts_calls": 12545,
+    "chars_requested": 1089964,
+    "chars_saved": 524006,
+    "savings_pct": 48.1,
     "outcomes": {
-      "hit": 20613,
-      "miss_stored": 125,
-      "miss_below_threshold": 13799,
+      "hit": 17166,
+      "miss_stored": 129,
+      "miss_below_threshold": 12416,
       "miss_quality_rejected": 0,
       "semantic_hit": 0
     }
@@ -227,372 +227,252 @@
   {
     "strategy": "semantic",
     "threshold": 1,
-    "tts_calls": 7156,
-    "chars_requested": 1215177,
-    "chars_saved": 1015157,
-    "savings_pct": 83.5,
+    "tts_calls": 6235,
+    "chars_requested": 1089964,
+    "chars_saved": 900166,
+    "savings_pct": 82.6,
     "outcomes": {
-      "hit": 30207,
-      "miss_stored": 7156,
+      "hit": 26817,
+      "miss_stored": 6235,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0,
-      "semantic_hit": 849
+      "semantic_hit": 759
     },
     "semantic_matches": [
       {
         "query": "Okay.",
         "matched": "Alright.",
-        "count": 141,
-        "correct": true
-      },
-      {
-        "query": "We have received your request.",
-        "matched": "Your request has been received.",
-        "count": 116,
-        "correct": true
-      },
-      {
-        "query": "We have processed your refund of {NUM} rupees.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 100,
+        "count": 128,
         "correct": true
       },
       {
         "query": "Certainly.",
         "matched": "Sure.",
-        "count": 97,
+        "count": 100,
         "correct": true
       },
       {
-        "query": "Your order {NUM} has been delivered.",
-        "matched": "We have delivered your order {NUM}.",
-        "count": 90,
+        "query": "We have processed your refund of {NUM} rupees.",
+        "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 83,
+        "correct": true
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 63,
+        "correct": true
+      },
+      {
+        "query": "Your {NUM} rupees refund is processed.",
+        "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 54,
+        "correct": true
+      },
+      {
+        "query": "बताइए, मैं आपकी कैसे मदद करूँ?",
+        "matched": "मैं आपकी क्या मदद कर सकता हूँ?",
+        "count": 49,
         "correct": true
       },
       {
         "query": "हमें आपका अनुरोध मिल गया है।",
         "matched": "आपका अनुरोध प्राप्त हो गया है।",
-        "count": 75,
-        "correct": true
-      },
-      {
-        "query": "Your {NUM} rupees refund is processed.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 45,
-        "correct": true
-      },
-      {
-        "query": "I'm sorry for the inconvenience.",
-        "matched": "Sorry for the inconvenience caused.",
-        "count": 39,
-        "correct": true
-      },
-      {
-        "query": "The payment of {NUM} rupees went through successfully.",
-        "matched": "Your payment of {NUM} rupees was successful.",
-        "count": 36,
-        "correct": true
-      },
-      {
-        "query": "Your order {NUM} has gone out for delivery.",
-        "matched": "Your order {NUM} is out for delivery.",
-        "count": 30,
-        "correct": true
-      },
-      {
-        "query": "Your order {NUM} has been cancelled.",
-        "matched": "We have cancelled your order {NUM}.",
-        "count": 28,
-        "correct": true
-      },
-      {
-        "query": "Order {NUM} is expected to reach you on {DATE}.",
-        "matched": "You should receive order {NUM} by {DATE}.",
-        "count": 20,
-        "correct": false
-      },
-      {
-        "query": "We have started processing your refund.",
-        "matched": "Your refund has been initiated.",
-        "count": 17,
-        "correct": true
-      },
-      {
-        "query": "There is a delay with your order {NUM}.",
-        "matched": "Your order {NUM} has been delayed.",
-        "count": 14,
-        "correct": true
-      },
-      {
-        "query": "We have shipped your order {NUM}.",
-        "matched": "Your order {NUM} has been shipped.",
-        "count": 1,
-        "correct": true
-      }
-    ],
-    "semantic_wrong": 20
-  },
-  {
-    "strategy": "semantic",
-    "threshold": 2,
-    "tts_calls": 8609,
-    "chars_requested": 1215177,
-    "chars_saved": 940220,
-    "savings_pct": 77.4,
-    "outcomes": {
-      "hit": 28164,
-      "miss_stored": 1070,
-      "miss_below_threshold": 7539,
-      "miss_quality_rejected": 0,
-      "semantic_hit": 1079
-    },
-    "semantic_matches": [
-      {
-        "query": "आपका अनुरोध प्राप्त हो गया है।",
-        "matched": "हमें आपका अनुरोध मिल गया है।",
-        "count": 221,
-        "correct": true
-      },
-      {
-        "query": "We have shipped your order {NUM}.",
-        "matched": "Your order {NUM} has been shipped.",
-        "count": 152,
-        "correct": true
-      },
-      {
-        "query": "Okay.",
-        "matched": "Alright.",
-        "count": 140,
+        "count": 46,
         "correct": true
       },
       {
         "query": "We have received your request.",
         "matched": "Your request has been received.",
-        "count": 116,
+        "count": 42,
         "correct": true
       },
       {
-        "query": "We have processed your refund of {NUM} rupees.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 99,
-        "correct": true
-      },
-      {
-        "query": "Certainly.",
-        "matched": "Sure.",
-        "count": 97,
-        "correct": true
-      },
-      {
-        "query": "Your {NUM} rupees refund is processed.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 45,
-        "correct": true
-      },
-      {
-        "query": "I'm sorry for the inconvenience.",
-        "matched": "Sorry for the inconvenience caused.",
-        "count": 38,
-        "correct": true
+        "query": "You should receive order {NUM} by {DATE}.",
+        "matched": "Order {NUM} is expected to reach you on {DATE}.",
+        "count": 42,
+        "correct": false
       },
       {
         "query": "The payment of {NUM} rupees went through successfully.",
         "matched": "Your payment of {NUM} rupees was successful.",
-        "count": 36,
+        "count": 34,
         "correct": true
       },
       {
         "query": "Your order {NUM} has gone out for delivery.",
         "matched": "Your order {NUM} is out for delivery.",
-        "count": 30,
+        "count": 25,
         "correct": true
       },
       {
         "query": "Your order {NUM} has been cancelled.",
         "matched": "We have cancelled your order {NUM}.",
-        "count": 27,
+        "count": 23,
         "correct": true
-      },
-      {
-        "query": "Order {NUM} is expected to reach you on {DATE}.",
-        "matched": "You should receive order {NUM} by {DATE}.",
-        "count": 20,
-        "correct": false
       },
       {
         "query": "We have delivered your order {NUM}.",
         "matched": "Your order {NUM} has been delivered.",
-        "count": 19,
-        "correct": true
-      },
-      {
-        "query": "We have started processing your refund.",
-        "matched": "Your refund has been initiated.",
-        "count": 17,
-        "correct": true
-      },
-      {
-        "query": "There is a delay with your order {NUM}.",
-        "matched": "Your order {NUM} has been delayed.",
-        "count": 14,
-        "correct": true
-      },
-      {
-        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
-        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
-        "count": 8,
-        "correct": false
-      }
-    ],
-    "semantic_wrong": 28
-  },
-  {
-    "strategy": "semantic",
-    "threshold": 5,
-    "tts_calls": 10451,
-    "chars_requested": 1215177,
-    "chars_saved": 808264,
-    "savings_pct": 66.5,
-    "outcomes": {
-      "hit": 25413,
-      "miss_stored": 430,
-      "miss_below_threshold": 10021,
-      "miss_quality_rejected": 0,
-      "semantic_hit": 989
-    },
-    "semantic_matches": [
-      {
-        "query": "आपका अनुरोध प्राप्त हो गया है।",
-        "matched": "हमें आपका अनुरोध मिल गया है।",
-        "count": 218,
-        "correct": true
-      },
-      {
-        "query": "We have shipped your order {NUM}.",
-        "matched": "Your order {NUM} has been shipped.",
-        "count": 151,
-        "correct": true
-      },
-      {
-        "query": "We have received your request.",
-        "matched": "Your request has been received.",
-        "count": 115,
-        "correct": true
-      },
-      {
-        "query": "We have processed your refund of {NUM} rupees.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 99,
-        "correct": true
-      },
-      {
-        "query": "Certainly.",
-        "matched": "Sure.",
-        "count": 97,
-        "correct": true
-      },
-      {
-        "query": "Alright.",
-        "matched": "Okay.",
-        "count": 88,
-        "correct": true
-      },
-      {
-        "query": "Your {NUM} rupees refund is processed.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 45,
-        "correct": true
-      },
-      {
-        "query": "The payment of {NUM} rupees went through successfully.",
-        "matched": "Your payment of {NUM} rupees was successful.",
-        "count": 36,
-        "correct": true
-      },
-      {
-        "query": "Your order {NUM} has gone out for delivery.",
-        "matched": "Your order {NUM} is out for delivery.",
-        "count": 29,
-        "correct": true
-      },
-      {
-        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
-        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
-        "count": 19,
-        "correct": false
-      },
-      {
-        "query": "We have delivered your order {NUM}.",
-        "matched": "Your order {NUM} has been delivered.",
-        "count": 19,
-        "correct": true
-      },
-      {
-        "query": "Order {NUM} is expected to reach you on {DATE}.",
-        "matched": "You should receive order {NUM} by {DATE}.",
-        "count": 18,
-        "correct": false
-      },
-      {
-        "query": "We have started processing your refund.",
-        "matched": "Your refund has been initiated.",
-        "count": 16,
+        "count": 22,
         "correct": true
       },
       {
         "query": "Sorry for the inconvenience caused.",
         "matched": "I'm sorry for the inconvenience.",
-        "count": 16,
+        "count": 20,
+        "correct": true
+      },
+      {
+        "query": "We have started processing your refund.",
+        "matched": "Your refund has been initiated.",
+        "count": 19,
         "correct": true
       },
       {
         "query": "There is a delay with your order {NUM}.",
         "matched": "Your order {NUM} has been delayed.",
-        "count": 14,
-        "correct": true
-      },
-      {
-        "query": "We have cancelled your order {NUM}.",
-        "matched": "Your order {NUM} has been cancelled.",
         "count": 9,
         "correct": true
       }
     ],
-    "semantic_wrong": 37
+    "semantic_wrong": 42
   },
   {
     "strategy": "semantic",
-    "threshold": 10,
-    "tts_calls": 12088,
-    "chars_requested": 1215177,
-    "chars_saved": 697411,
-    "savings_pct": 57.4,
+    "threshold": 2,
+    "tts_calls": 7583,
+    "chars_requested": 1089964,
+    "chars_saved": 834925,
+    "savings_pct": 76.6,
     "outcomes": {
-      "hit": 22933,
-      "miss_stored": 244,
-      "miss_below_threshold": 11844,
+      "hit": 24557,
+      "miss_stored": 915,
+      "miss_below_threshold": 6668,
       "miss_quality_rejected": 0,
-      "semantic_hit": 833
+      "semantic_hit": 1166
     },
     "semantic_matches": [
       {
-        "query": "We have shipped your order {NUM}.",
-        "matched": "Your order {NUM} has been shipped.",
-        "count": 151,
+        "query": "Sure.",
+        "matched": "Certainly.",
+        "count": 400,
+        "correct": true
+      },
+      {
+        "query": "Your refund of {NUM} rupees has been processed.",
+        "matched": "We have processed your refund of {NUM} rupees.",
+        "count": 177,
+        "correct": true
+      },
+      {
+        "query": "Okay.",
+        "matched": "Alright.",
+        "count": 128,
+        "correct": true
+      },
+      {
+        "query": "Your order {NUM} has been delivered.",
+        "matched": "We have delivered your order {NUM}.",
+        "count": 97,
+        "correct": true
+      },
+      {
+        "query": "Your {NUM} rupees refund is processed.",
+        "matched": "We have processed your refund of {NUM} rupees.",
+        "count": 54,
+        "correct": true
+      },
+      {
+        "query": "बताइए, मैं आपकी कैसे मदद करूँ?",
+        "matched": "मैं आपकी क्या मदद कर सकता हूँ?",
+        "count": 48,
+        "correct": true
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
+        "count": 46,
         "correct": true
       },
       {
         "query": "We have received your request.",
         "matched": "Your request has been received.",
-        "count": 114,
+        "count": 42,
         "correct": true
       },
       {
-        "query": "We have processed your refund of {NUM} rupees.",
-        "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 98,
+        "query": "You should receive order {NUM} by {DATE}.",
+        "matched": "Order {NUM} is expected to reach you on {DATE}.",
+        "count": 42,
+        "correct": false
+      },
+      {
+        "query": "The payment of {NUM} rupees went through successfully.",
+        "matched": "Your payment of {NUM} rupees was successful.",
+        "count": 34,
         "correct": true
       },
+      {
+        "query": "Your order {NUM} has gone out for delivery.",
+        "matched": "Your order {NUM} is out for delivery.",
+        "count": 25,
+        "correct": true
+      },
+      {
+        "query": "Your order {NUM} has been cancelled.",
+        "matched": "We have cancelled your order {NUM}.",
+        "count": 22,
+        "correct": true
+      },
+      {
+        "query": "Sorry for the inconvenience caused.",
+        "matched": "I'm sorry for the inconvenience.",
+        "count": 20,
+        "correct": true
+      },
+      {
+        "query": "We have started processing your refund.",
+        "matched": "Your refund has been initiated.",
+        "count": 19,
+        "correct": true
+      },
+      {
+        "query": "There is a delay with your order {NUM}.",
+        "matched": "Your order {NUM} has been delayed.",
+        "count": 9,
+        "correct": true
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 2,
+        "correct": true
+      },
+      {
+        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
+        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
+        "count": 1,
+        "correct": false
+      }
+    ],
+    "semantic_wrong": 43
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 5,
+    "tts_calls": 9216,
+    "chars_requested": 1089964,
+    "chars_saved": 731414,
+    "savings_pct": 67.1,
+    "outcomes": {
+      "hit": 22396,
+      "miss_stored": 336,
+      "miss_below_threshold": 8880,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 642
+    },
+    "semantic_matches": [
       {
         "query": "Certainly.",
         "matched": "Sure.",
@@ -600,39 +480,63 @@
         "correct": true
       },
       {
-        "query": "Alright.",
-        "matched": "Okay.",
-        "count": 84,
+        "query": "We have processed your refund of {NUM} rupees.",
+        "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 80,
         "correct": true
       },
       {
-        "query": "हमें आपका अनुरोध मिल गया है।",
-        "matched": "आपका अनुरोध प्राप्त हो गया है।",
-        "count": 69,
+        "query": "Alright.",
+        "matched": "Okay.",
+        "count": 73,
+        "correct": true
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 63,
         "correct": true
       },
       {
         "query": "Your {NUM} rupees refund is processed.",
         "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 52,
+        "correct": true
+      },
+      {
+        "query": "बताइए, मैं आपकी कैसे मदद करूँ?",
+        "matched": "मैं आपकी क्या मदद कर सकता हूँ?",
+        "count": 48,
+        "correct": true
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
         "count": 44,
+        "correct": true
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 42,
         "correct": true
       },
       {
         "query": "The payment of {NUM} rupees went through successfully.",
         "matched": "Your payment of {NUM} rupees was successful.",
-        "count": 36,
+        "count": 32,
         "correct": true
-      },
-      {
-        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
-        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
-        "count": 31,
-        "correct": false
       },
       {
         "query": "Your order {NUM} has gone out for delivery.",
         "matched": "Your order {NUM} is out for delivery.",
-        "count": 27,
+        "count": 24,
+        "correct": true
+      },
+      {
+        "query": "Sorry for the inconvenience caused.",
+        "matched": "I'm sorry for the inconvenience.",
+        "count": 19,
         "correct": true
       },
       {
@@ -642,106 +546,232 @@
         "correct": true
       },
       {
-        "query": "Order {NUM} is expected to reach you on {DATE}.",
-        "matched": "You should receive order {NUM} by {DATE}.",
-        "count": 16,
-        "correct": false
-      },
-      {
         "query": "We have started processing your refund.",
         "matched": "Your refund has been initiated.",
-        "count": 15,
+        "count": 18,
         "correct": true
       },
       {
-        "query": "Sorry for the inconvenience caused.",
-        "matched": "I'm sorry for the inconvenience.",
+        "query": "Order {NUM} is expected to reach you on {DATE}.",
+        "matched": "You should receive order {NUM} by {DATE}.",
         "count": 15,
+        "correct": false
+      },
+      {
+        "query": "We have cancelled your order {NUM}.",
+        "matched": "Your order {NUM} has been cancelled.",
+        "count": 9,
         "correct": true
       },
       {
         "query": "There is a delay with your order {NUM}.",
         "matched": "Your order {NUM} has been delayed.",
-        "count": 12,
+        "count": 7,
         "correct": true
+      },
+      {
+        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
+        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
+        "count": 2,
+        "correct": false
+      }
+    ],
+    "semantic_wrong": 17
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 10,
+    "tts_calls": 10634,
+    "chars_requested": 1089964,
+    "chars_saved": 634064,
+    "savings_pct": 58.2,
+    "outcomes": {
+      "hit": 19882,
+      "miss_stored": 240,
+      "miss_below_threshold": 10394,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 645
+    },
+    "semantic_matches": [
+      {
+        "query": "Certainly.",
+        "matched": "Sure.",
+        "count": 96,
+        "correct": true
+      },
+      {
+        "query": "We have processed your refund of {NUM} rupees.",
+        "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 80,
+        "correct": true
+      },
+      {
+        "query": "Alright.",
+        "matched": "Okay.",
+        "count": 70,
+        "correct": true
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 61,
+        "correct": true
+      },
+      {
+        "query": "Your {NUM} rupees refund is processed.",
+        "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 52,
+        "correct": true
+      },
+      {
+        "query": "बताइए, मैं आपकी कैसे मदद करूँ?",
+        "matched": "मैं आपकी क्या मदद कर सकता हूँ?",
+        "count": 47,
+        "correct": true
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
+        "count": 44,
+        "correct": true
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 41,
+        "correct": true
+      },
+      {
+        "query": "The payment of {NUM} rupees went through successfully.",
+        "matched": "Your payment of {NUM} rupees was successful.",
+        "count": 30,
+        "correct": true
+      },
+      {
+        "query": "I'm sorry for the inconvenience.",
+        "matched": "Sorry for the inconvenience caused.",
+        "count": 25,
+        "correct": true
+      },
+      {
+        "query": "Your order {NUM} has gone out for delivery.",
+        "matched": "Your order {NUM} is out for delivery.",
+        "count": 22,
+        "correct": true
+      },
+      {
+        "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
+        "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
+        "count": 18,
+        "correct": false
+      },
+      {
+        "query": "We have delivered your order {NUM}.",
+        "matched": "Your order {NUM} has been delivered.",
+        "count": 17,
+        "correct": true
+      },
+      {
+        "query": "We have started processing your refund.",
+        "matched": "Your refund has been initiated.",
+        "count": 16,
+        "correct": true
+      },
+      {
+        "query": "Order {NUM} is expected to reach you on {DATE}.",
+        "matched": "You should receive order {NUM} by {DATE}.",
+        "count": 13,
+        "correct": false
       },
       {
         "query": "We have cancelled your order {NUM}.",
         "matched": "Your order {NUM} has been cancelled.",
         "count": 7,
         "correct": true
+      },
+      {
+        "query": "There is a delay with your order {NUM}.",
+        "matched": "Your order {NUM} has been delayed.",
+        "count": 6,
+        "correct": true
       }
     ],
-    "semantic_wrong": 47
+    "semantic_wrong": 31
   },
   {
     "strategy": "semantic",
     "threshold": 20,
-    "tts_calls": 13804,
-    "chars_requested": 1215177,
-    "chars_saved": 607748,
-    "savings_pct": 50.0,
+    "tts_calls": 12425,
+    "chars_requested": 1089964,
+    "chars_saved": 530237,
+    "savings_pct": 48.6,
     "outcomes": {
-      "hit": 20095,
-      "miss_stored": 121,
-      "miss_below_threshold": 13683,
+      "hit": 16807,
+      "miss_stored": 123,
+      "miss_below_threshold": 12302,
       "miss_quality_rejected": 0,
-      "semantic_hit": 785
+      "semantic_hit": 591
     },
     "semantic_matches": [
       {
-        "query": "We have shipped your order {NUM}.",
-        "matched": "Your order {NUM} has been shipped.",
-        "count": 151,
-        "correct": true
-      },
-      {
-        "query": "We have received your request.",
-        "matched": "Your request has been received.",
-        "count": 112,
+        "query": "Certainly.",
+        "matched": "Sure.",
+        "count": 93,
         "correct": true
       },
       {
         "query": "We have processed your refund of {NUM} rupees.",
         "matched": "Your refund of {NUM} rupees has been processed.",
-        "count": 97,
-        "correct": true
-      },
-      {
-        "query": "Certainly.",
-        "matched": "Sure.",
-        "count": 95,
+        "count": 72,
         "correct": true
       },
       {
         "query": "Alright.",
         "matched": "Okay.",
-        "count": 81,
+        "count": 66,
         "correct": true
       },
       {
-        "query": "हमें आपका अनुरोध मिल गया है।",
-        "matched": "आपका अनुरोध प्राप्त हो गया है।",
-        "count": 68,
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 58,
+        "correct": true
+      },
+      {
+        "query": "बताइए, मैं आपकी कैसे मदद करूँ?",
+        "matched": "मैं आपकी क्या मदद कर सकता हूँ?",
+        "count": 45,
         "correct": true
       },
       {
         "query": "Your {NUM} rupees refund is processed.",
         "matched": "Your refund of {NUM} rupees has been processed.",
+        "count": 45,
+        "correct": true
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
         "count": 43,
         "correct": true
       },
       {
-        "query": "The payment of {NUM} rupees went through successfully.",
-        "matched": "Your payment of {NUM} rupees was successful.",
-        "count": 31,
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 39,
         "correct": true
       },
       {
         "query": "ऑर्डर {NUM} की डिलीवरी हो चुकी है।",
         "matched": "आपका ऑर्डर {NUM} भेज दिया गया है।",
-        "count": 30,
+        "count": 38,
         "correct": false
+      },
+      {
+        "query": "The payment of {NUM} rupees went through successfully.",
+        "matched": "Your payment of {NUM} rupees was successful.",
+        "count": 26,
+        "correct": true
       },
       {
         "query": "Your order {NUM} has gone out for delivery.",
@@ -752,40 +782,40 @@
       {
         "query": "We have delivered your order {NUM}.",
         "matched": "Your order {NUM} has been delivered.",
-        "count": 16,
+        "count": 13,
         "correct": true
       },
       {
         "query": "We have started processing your refund.",
         "matched": "Your refund has been initiated.",
-        "count": 11,
-        "correct": true
-      },
-      {
-        "query": "Sorry for the inconvenience caused.",
-        "matched": "I'm sorry for the inconvenience.",
-        "count": 11,
+        "count": 13,
         "correct": true
       },
       {
         "query": "Order {NUM} is expected to reach you on {DATE}.",
         "matched": "You should receive order {NUM} by {DATE}.",
-        "count": 11,
+        "count": 8,
         "correct": false
+      },
+      {
+        "query": "Sorry for the inconvenience caused.",
+        "matched": "I'm sorry for the inconvenience.",
+        "count": 6,
+        "correct": true
       },
       {
         "query": "There is a delay with your order {NUM}.",
         "matched": "Your order {NUM} has been delayed.",
-        "count": 6,
+        "count": 5,
         "correct": true
       },
       {
         "query": "We have cancelled your order {NUM}.",
         "matched": "Your order {NUM} has been cancelled.",
-        "count": 3,
+        "count": 2,
         "correct": true
       }
     ],
-    "semantic_wrong": 41
+    "semantic_wrong": 46
   }
 ]

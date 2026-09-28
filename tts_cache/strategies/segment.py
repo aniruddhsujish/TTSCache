@@ -26,6 +26,8 @@ class SegmentStrategy:
         self.metrics = metrics
 
     def _split_into_cache_units(self, normalized: str, language: str) -> list[str]:
+        """For segment caching, splits into list of sentences"""
+
         return split_sentences(normalized, language)
 
     def _on_stored(self, text: str, profile: VoiceProfile) -> None:
@@ -58,6 +60,10 @@ class SegmentStrategy:
     async def get_audio(
         self, text: str, profile: VoiceProfile, user_id: str
     ) -> list[TTSResult]:
+        """The main function that is exposed that gets the audio by cache/ synthesis.
+
+        Returns a list of TTSResult objects that reprasent the audio for each sentence.
+        """
         normalized = normalize(text, profile.language)
         sentences = self._split_into_cache_units(normalized, profile.language)
 

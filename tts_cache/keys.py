@@ -14,6 +14,8 @@ class VoiceProfile:
 
 
 def build_key(text: str, profile: VoiceProfile) -> str:
+    """Builds the key from text, profile and namespace"""
+
     payload = {
         "text": text,
         "namespace": profile.namespace,
