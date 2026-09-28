@@ -7,19 +7,37 @@ from tts_cache.normalize import normalize
 from tts_cache.quality import passes_quality
 from tts_cache.strategies.segment import SegmentStrategy
 
-NUMBER = re.compile(r"^[\d,]+(?:\.\d+)?$")
+SLOT_PATTERNS = [
+    (
+        "DATE",
+        re.compile(r"^\d{1,4}[/.-]\d{1,2}[/.-]\d{1,4}$"),
+    ),  # 12/03/2026, 2026-03-12, 12.03.2026
+    ("TIME", re.compile(r"^\d{1,2}:\d{2}$")),  # 5:30, 17:45
+    ("NUM", re.compile(r"^[\d,]+(?:\.\d+)?$")),  # 4521, 45,230.50
+]
+SLOT_PLACEHOLDER = re.compile(r"\{(?:NUM|DATE|TIME)\}")
 TRAILING_PUNCTUATION = ".,!?।"
 MAX_VARIABLES = 2
 BYTES_PER_SAMPLE = 2
 
 
+def slot_type(word: str) -> str | None:
+    """ "'DATE', 'TIME' or 'Num' if this word is a variable"""
+    core = word.rstrip(TRAILING_PUNCTUATION)
+    for name, pattern in SLOT_PATTERNS:
+        if pattern.match(core):
+            return name
+    return None
+
+
+def slots(template: str) -> list[str]:
+    """The placeholders in a template, in order. eg.g ['{NUM}', '{DATE}']"""
+    return SLOT_PLACEHOLDER.findall(template)
+
+
 def find_variables(words: list[str]) -> list[int] | None:
-    """Return the positions of numeric words, or None if there are none or too many."""
-    positions = []
-    for i, word in enumerate(words):
-        core = word.rstrip(TRAILING_PUNCTUATION)
-        if NUMBER.match(core):
-            positions.append(i)
+    """Positions of variable words, or None if there are none or too many."""
+    positions = [i for i, w in enumerate(words) if slot_type(w)]
 
     if not positions or len(positions) > MAX_VARIABLES:
         return None
@@ -27,14 +45,14 @@ def find_variables(words: list[str]) -> list[int] | None:
 
 
 def make_template(words: list[str], positions: list[int]) -> tuple[str, list[str]]:
-    """Replace variable words with {NUM}, keeping trailing punctuation."""
+    """Replace variable words with typed placeholders, keeping trailing punctuation."""
     template_words = list(words)
     values = []
     for i in positions:
         word = words[i]
         core = word.rstrip(TRAILING_PUNCTUATION)
         punctuation = word[len(core) :]
-        template_words[i] = "{NUM}" + punctuation
+        template_words[i] = "{" + slot_type(word) + "}" + punctuation
         values.append(word)
     return " ".join(template_words), values
 

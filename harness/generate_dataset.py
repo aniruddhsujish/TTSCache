@@ -86,11 +86,14 @@ VARIABLE_BODIES = {
         "Your order {n} will arrive tomorrow.",
         # two variables → template caching should fall back to segment-level
         "Your order {n} will arrive in {d} days.",
+        "Your appointment is on {date}.",
+        "The technician will visit at {time}.",
     ],
     "hi": [
         "आपका ऑर्डर {n} भेज दिया गया है।",
         "आपका ₹{amt} का रिफंड प्रोसेस हो गया है।",
         "आपका टिकट नंबर {n} है।",
+        "आपकी अपॉइंटमेंट {date} को है।",
         # paraphrase
         "हमने आपका ऑर्डर {n} भेज दिया है।",
         # near-misses
@@ -190,6 +193,8 @@ def generate(
                     n=rng.randint(1000, 9999),
                     amt=rng.choice(AMOUNTS),
                     d=rng.randint(2, 7),
+                    date=f"{rng.randint(1, 28):02d}/{rng.randint(1, 12):02d}/2026",
+                    time=f"{rng.randint(9, 18)}:{rng.choice(['00', '15', '30', '45'])}",
                 )
             )
         else:

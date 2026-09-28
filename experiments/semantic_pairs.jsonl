@@ -1,0 +1,416 @@
+{"a": "Your request has been received.", "b": "We have received your request.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please hold while I check that for you.", "b": "Please wait while I look into that for you.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Thank you for calling.", "b": "Thanks for calling!", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Is there anything else I can help you with?", "b": "Can I help you with anything else?", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your refund has been processed.", "b": "We have processed your refund.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your order {NUM} has been shipped.", "b": "We have shipped your order {NUM}.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I have updated your address.", "b": "Your address has been updated.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your complaint has been registered.", "b": "We have registered your complaint.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The technician will call you before the visit.", "b": "Before the visit, the technician will give you a call.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your card will be delivered within {NUM} working days.", "b": "You will receive your card within {NUM} working days.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please keep your account number ready.", "b": "Please have your account number handy.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I am transferring your call to an agent.", "b": "Let me connect you to an agent.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your appointment is scheduled for {NUM} pm.", "b": "We have booked your appointment for {NUM} pm.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your password has been reset.", "b": "We have reset your password.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The outage in your area has been resolved.", "b": "The service disruption in your area has been fixed.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your bill has been paid.", "b": "Your bill payment has been completed.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Sorry for the inconvenience.", "b": "We apologize for the inconvenience.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Could you please repeat that?", "b": "Can you say that again, please?", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your recharge was successful.", "b": "Your recharge went through.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "We will send you an SMS confirmation.", "b": "You will get a confirmation by SMS.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your flight is on time.", "b": "Your flight is running on schedule.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your parcel is out for delivery.", "b": "Your package has left for delivery.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your loan application is under review.", "b": "We are currently reviewing your loan application.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your KYC documents have been verified.", "b": "We have verified your KYC documents.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please do not share your OTP with anyone.", "b": "Never share your OTP with anyone.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your subscription has been renewed.", "b": "We have renewed your subscription.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your table is booked for {NUM} people.", "b": "We have reserved a table for {NUM} people.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The store opens at {NUM} am.", "b": "Our store opens at {NUM} am.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your claim has been approved.", "b": "We have approved your claim.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I could not find any booking under this number.", "b": "There is no booking under this number.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your data pack has expired.", "b": "Your data pack is no longer valid.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your EMI has been deducted.", "b": "The EMI amount has been debited.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your account has been blocked for security reasons.", "b": "For security reasons, your account has been blocked.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your cheque has been cleared.", "b": "The cheque has cleared.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "We have received your payment of Rs. {NUM}.", "b": "Your payment of Rs. {NUM} has been received.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your ride is arriving in {NUM} minutes.", "b": "Your driver will reach you in {NUM} minutes.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your food is being prepared.", "b": "The restaurant is preparing your food.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please restart your router.", "b": "Kindly restart your router.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your ticket has been cancelled.", "b": "We have cancelled your ticket.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The doctor is running late.", "b": "The doctor has been delayed.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your prescription is ready for pickup.", "b": "You can collect your prescription now.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your gas cylinder booking is confirmed.", "b": "We have confirmed your gas cylinder booking.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your connection will be restored shortly.", "b": "We will restore your connection soon.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please visit the nearest branch.", "b": "Kindly go to your nearest branch.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I have noted your feedback.", "b": "Your feedback has been noted.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your meter reading has been recorded.", "b": "We have recorded your meter reading.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your insurance policy is active.", "b": "Your insurance policy is in force.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The item is currently out of stock.", "b": "This item is not available right now.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "We will call you back shortly.", "b": "You will receive a call back from us soon.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your balance is Rs. {NUM}.", "b": "You have Rs. {NUM} in your account.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your exchange request has been accepted.", "b": "We have accepted your exchange request.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your boarding pass has been sent to your email.", "b": "We have emailed your boarding pass to you.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please enter your PIN.", "b": "Kindly key in your PIN.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your delivery has been rescheduled to Monday.", "b": "We have moved your delivery to Monday.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The payment link has expired.", "b": "This payment link is no longer valid.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your credit limit has been increased.", "b": "We have raised your credit limit.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I will escalate this to my supervisor.", "b": "Let me escalate this to my supervisor.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your case has been closed.", "b": "We have closed your case.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your SIM will be activated within {NUM} hours.", "b": "Your SIM activation will happen within {NUM} hours.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The train is delayed by {NUM} minutes.", "b": "The train is running {NUM} minutes late.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your warranty covers this repair.", "b": "This repair is covered under your warranty.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please share a photo of the damaged item.", "b": "Kindly send us a picture of the damaged product.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your pickup has been scheduled.", "b": "We have scheduled your pickup.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your account has been verified.", "b": "We have verified your account.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "You are eligible for a refund.", "b": "You qualify for a refund.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your statement has been sent to your registered email.", "b": "We have emailed the statement to your registered email address.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Our office is closed on Sundays.", "b": "We are closed on Sundays.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The fee will be waived.", "b": "We will waive the fee.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your order will be delivered by Friday.", "b": "You will receive your order by Friday.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please check your spam folder.", "b": "Kindly look in your spam folder.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your appointment has been confirmed.", "b": "We have confirmed your appointment.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your complaint number is {NUM}.", "b": "The reference number for your complaint is {NUM}.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The ATM is not dispensing cash.", "b": "The ATM is not giving out cash.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your UPI PIN has been changed.", "b": "We have changed your UPI PIN.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I understand your concern.", "b": "I understand why you are concerned.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The courier tried to deliver your package.", "b": "A delivery attempt was made for your package.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your cashback will be credited within {NUM} days.", "b": "You will receive the cashback within {NUM} days.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please speak after the beep.", "b": "Kindly speak after the beep.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your booking reference is {NUM}.", "b": "Your booking ID is {NUM}.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your policy premium is due next week.", "b": "Next week your policy premium falls due.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "We have blocked your lost card.", "b": "Your lost card has been blocked.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your new card has been dispatched.", "b": "We have dispatched your new card.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The network issue has been fixed.", "b": "We have resolved the network issue.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please wait on the line.", "b": "Kindly stay on the line.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your seat has been upgraded.", "b": "We have upgraded your seat.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "This offer is valid till Sunday.", "b": "You can use this offer until Sunday.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your email address has been updated.", "b": "We have changed your email address.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your return has been picked up.", "b": "We have collected your return.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your plan will auto-renew.", "b": "Your plan renews automatically.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The bank is closed today.", "b": "The bank is not open today.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your request is being processed.", "b": "We are processing your request.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your OTP is valid for {NUM} minutes.", "b": "The OTP will expire in {NUM} minutes.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please confirm your date of birth.", "b": "Can you confirm your date of birth?", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I have raised a ticket for this issue.", "b": "A ticket has been raised for this issue.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your gift card has been activated.", "b": "We have activated your gift card.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your vehicle service is complete.", "b": "We have finished servicing your vehicle.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The driver has arrived.", "b": "Your driver is here.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your membership has been extended.", "b": "We have extended your membership.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your hotel check-in is at {NUM} pm.", "b": "You can check in to the hotel at {NUM} pm.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The call may be recorded for quality purposes.", "b": "This call may be recorded for quality purposes.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your order has been packed.", "b": "We have packed your order.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your electricity bill has been generated.", "b": "We have generated your electricity bill.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please try again later.", "b": "Kindly try again after some time.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your account statement is ready.", "b": "Your account statement is now available.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your trip has been cancelled at no charge.", "b": "We have cancelled your trip free of charge.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "I am sorry, I did not understand that.", "b": "Sorry, I could not understand that.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your nominee has been added.", "b": "We have added your nominee.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your mobile number has been linked to your account.", "b": "We have linked your mobile number to your account.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your refund of Rs. {NUM} has been credited.", "b": "We have credited Rs. {NUM} to you as a refund.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The payment failed due to a network error.", "b": "A network error caused the payment to fail.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your parcel has been delivered.", "b": "Your package was delivered.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your service request has been assigned to a technician.", "b": "A technician has been assigned to your service request.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please enter the amount.", "b": "Kindly enter the amount.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your booking has been modified.", "b": "We have made changes to your booking.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your cart has been saved.", "b": "We have saved your cart.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your application number is {NUM}.", "b": "The number for your application is {NUM}.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "The bus leaves at {NUM} pm.", "b": "The bus departs at {NUM} pm.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your cylinder will be delivered tomorrow.", "b": "We will deliver your cylinder tomorrow.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your fixed deposit has matured.", "b": "Your FD has reached maturity.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your auto-debit has been set up.", "b": "We have set up auto-debit for you.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Hello, how may I help you today?", "b": "Hi, how can I help you today?", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Goodbye, have a nice day.", "b": "Bye, have a great day.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your points have been redeemed.", "b": "We have redeemed your points.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Your coupon has been applied.", "b": "We have applied your coupon.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "Please do not hang up.", "b": "Please stay on the call.", "same": true, "category": "paraphrase", "language": "en"}
+{"a": "आपका अनुरोध प्राप्त हो गया है।", "b": "हमें आपका अनुरोध मिल गया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका ऑर्डर {NUM} भेज दिया गया है।", "b": "हमने आपका ऑर्डर {NUM} भेज दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "कॉल करने के लिए धन्यवाद।", "b": "कॉल करने के लिए शुक्रिया।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "कृपया प्रतीक्षा करें।", "b": "कृपया थोड़ा इंतज़ार करें।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका रिफंड प्रोसेस हो गया है।", "b": "हमने आपका रिफंड प्रोसेस कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका पासवर्ड रीसेट हो गया है।", "b": "हमने आपका पासवर्ड रीसेट कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "असुविधा के लिए खेद है।", "b": "असुविधा के लिए हमें माफ़ करें।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "क्या मैं आपकी और कोई मदद कर सकता हूँ?", "b": "क्या आपको किसी और चीज़ में मदद चाहिए?", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी शिकायत दर्ज कर ली गई है।", "b": "हमने आपकी शिकायत दर्ज कर ली है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका बिल भुगतान हो गया है।", "b": "आपके बिल का भुगतान पूरा हो गया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका कनेक्शन जल्द ही बहाल कर दिया जाएगा।", "b": "हम जल्द ही आपका कनेक्शन बहाल कर देंगे।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "कृपया अपना ओटीपी किसी के साथ साझा न करें।", "b": "अपना ओटीपी किसी को न बताएं।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका कार्ड {NUM} दिनों में पहुँच जाएगा।", "b": "आपको {NUM} दिनों में आपका कार्ड मिल जाएगा।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "मैं आपकी कॉल एजेंट को ट्रांसफर कर रहा हूँ।", "b": "मैं आपको एक एजेंट से जोड़ रहा हूँ।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका रिचार्ज सफल रहा।", "b": "आपका रिचार्ज हो गया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी अपॉइंटमेंट पक्की हो गई है।", "b": "हमने आपकी अपॉइंटमेंट कन्फर्म कर दी है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका खाता सत्यापित हो गया है।", "b": "हमने आपका खाता सत्यापित कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "कृपया दोबारा कोशिश करें।", "b": "कृपया फिर से प्रयास करें।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका पार्सल डिलीवरी के लिए निकल चुका है।", "b": "आपका पार्सल डिलीवरी के लिए रवाना हो गया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "हम आपको जल्द ही वापस कॉल करेंगे।", "b": "आपको जल्द ही हमारी ओर से कॉल आएगी।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी टिकट रद्द कर दी गई है।", "b": "हमने आपकी टिकट रद्द कर दी है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका बैलेंस {NUM} रुपये है।", "b": "आपके खाते में {NUM} रुपये हैं।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी सदस्यता नवीनीकृत हो गई है।", "b": "हमने आपकी सदस्यता का नवीनीकरण कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "कृपया लाइन पर बने रहें।", "b": "कृपया कॉल पर बने रहें।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी शिकायत संख्या {NUM} है।", "b": "आपकी शिकायत का नंबर {NUM} है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका पता अपडेट हो गया है।", "b": "हमने आपका पता अपडेट कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी ट्रेन {NUM} मिनट देरी से चल रही है।", "b": "आपकी ट्रेन {NUM} मिनट लेट है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका केवाईसी पूरा हो गया है।", "b": "आपकी केवाईसी प्रक्रिया पूरी हो गई है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "ड्राइवर पहुँच गया है।", "b": "आपका ड्राइवर आ गया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका ऑर्डर पैक हो गया है।", "b": "हमने आपका ऑर्डर पैक कर दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "यह ऑफ़र रविवार तक मान्य है।", "b": "आप यह ऑफ़र रविवार तक इस्तेमाल कर सकते हैं।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "मुझे समझ नहीं आया, कृपया दोबारा बोलें।", "b": "मैं समझ नहीं पाया, कृपया फिर से बोलें।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका नया कार्ड भेज दिया गया है।", "b": "हमने आपका नया कार्ड भेज दिया है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी पिकअप निर्धारित हो गई है।", "b": "हमने आपकी पिकअप तय कर दी है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "बैंक आज बंद है।", "b": "आज बैंक नहीं खुला है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी ईएमआई कट गई है।", "b": "आपकी ईएमआई की राशि काट ली गई है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका खाना तैयार हो रहा है।", "b": "रेस्टोरेंट आपका खाना बना रहा है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "नमस्ते, मैं आपकी क्या मदद कर सकता हूँ?", "b": "नमस्ते, बताइए मैं आपकी कैसे मदद करूँ?", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपका दिन शुभ हो।", "b": "आपका दिन अच्छा रहे।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "आपकी वापसी स्वीकार कर ली गई है।", "b": "हमने आपकी वापसी स्वीकार कर ली है।", "same": true, "category": "paraphrase_hi", "language": "hi"}
+{"a": "Aapka order ship ho gaya hai.", "b": "Aapka order bhej diya gaya hai.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Please thoda wait kijiye.", "b": "Please thoda intezaar kijiye.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Aapka refund process ho gaya hai.", "b": "Humne aapka refund process kar diya hai.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Aapki complaint register ho gayi hai.", "b": "Humne aapki complaint register kar li hai.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Aapka payment successful raha.", "b": "Aapka payment ho gaya hai.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Main aapko agent se connect kar raha hoon.", "b": "Main aapki call agent ko transfer kar raha hoon.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Aapka card {NUM} din mein aa jayega.", "b": "Aapko {NUM} din mein aapka card mil jayega.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Kya main aapki aur koi help kar sakta hoon?", "b": "Kya aapko kisi aur cheez mein help chahiye?", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Aapka password reset ho gaya hai.", "b": "Humne aapka password reset kar diya hai.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "Call karne ke liye thank you.", "b": "Call karne ke liye dhanyavaad.", "same": true, "category": "paraphrase_hinglish", "language": "hinglish"}
+{"a": "The payment was successful.", "b": "The payment was not successful.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your card has been blocked.", "b": "Your card has not been blocked.", "same": false, "category": "negation", "language": "en"}
+{"a": "You can cancel this order.", "b": "You cannot cancel this order.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your refund has been processed.", "b": "Your refund has not been processed yet.", "same": false, "category": "negation", "language": "en"}
+{"a": "The technician will visit today.", "b": "The technician will not visit today.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your documents are complete.", "b": "Your documents are incomplete.", "same": false, "category": "negation", "language": "en"}
+{"a": "This item is eligible for return.", "b": "This item is not eligible for return.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your SIM is active.", "b": "Your SIM is inactive.", "same": false, "category": "negation", "language": "en"}
+{"a": "The offer applies to your order.", "b": "The offer does not apply to your order.", "same": false, "category": "negation", "language": "en"}
+{"a": "You need to visit the branch.", "b": "You do not need to visit the branch.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your warranty covers this repair.", "b": "Your warranty does not cover this repair.", "same": false, "category": "negation", "language": "en"}
+{"a": "We were able to reach the customer.", "b": "We were unable to reach the customer.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your account is linked to Aadhaar.", "b": "Your account is not linked to Aadhaar.", "same": false, "category": "negation", "language": "en"}
+{"a": "The ATM is dispensing cash.", "b": "The ATM is not dispensing cash.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your flight is on time.", "b": "Your flight is not on time.", "same": false, "category": "negation", "language": "en"}
+{"a": "The delivery address is correct.", "b": "The delivery address is incorrect.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your policy is valid.", "b": "Your policy is invalid.", "same": false, "category": "negation", "language": "en"}
+{"a": "You will be charged a fee.", "b": "You will not be charged a fee.", "same": false, "category": "negation", "language": "en"}
+{"a": "The OTP was correct.", "b": "The OTP was incorrect.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your complaint has been resolved.", "b": "Your complaint has not been resolved.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your order includes the charger.", "b": "Your order does not include the charger.", "same": false, "category": "negation", "language": "en"}
+{"a": "The store is open on Sundays.", "b": "The store is never open on Sundays.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your KYC is verified.", "b": "Your KYC is unverified.", "same": false, "category": "negation", "language": "en"}
+{"a": "The payment went through.", "b": "The payment did not go through.", "same": false, "category": "negation", "language": "en"}
+{"a": "I was able to find your booking.", "b": "I was unable to find your booking.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your bill includes taxes.", "b": "Your bill excludes taxes.", "same": false, "category": "negation", "language": "en"}
+{"a": "The meter reading was recorded.", "b": "The meter reading was not recorded.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your plan will auto-renew.", "b": "Your plan will not auto-renew.", "same": false, "category": "negation", "language": "en"}
+{"a": "This transaction is safe.", "b": "This transaction is unsafe.", "same": false, "category": "negation", "language": "en"}
+{"a": "A refund is available for this order.", "b": "A refund is unavailable for this order.", "same": false, "category": "negation", "language": "en"}
+{"a": "Your request has been received.", "b": "Your request has been rejected.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your loan application was approved.", "b": "Your loan application was rejected.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The amount has been credited to your account.", "b": "The amount has been debited from your account.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your booking is confirmed.", "b": "Your booking is cancelled.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your subscription has been renewed.", "b": "Your subscription has been paused.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your claim has been accepted.", "b": "Your claim has been denied.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The payment is complete.", "b": "The payment is still pending.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your connection has been restored.", "b": "Your connection has been disconnected.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your card has been activated.", "b": "Your card has been deactivated.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your credit limit has been increased.", "b": "Your credit limit has been reduced.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your seat has been upgraded.", "b": "Your seat has been downgraded.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your account has been unlocked.", "b": "Your account has been locked.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The price has gone up.", "b": "The price has gone down.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your order has been delivered.", "b": "Your order has been returned to the seller.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The train is early.", "b": "The train is late.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your balance is sufficient.", "b": "Your balance is insufficient.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your appointment is confirmed.", "b": "Your appointment is on hold.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your return has been accepted.", "b": "Your return has been declined.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The interest rate has increased.", "b": "The interest rate has decreased.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your number has been ported in.", "b": "Your number has been ported out.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your application passed verification.", "b": "Your application failed verification.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The download completed.", "b": "The download failed.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your points have been added.", "b": "Your points have been deducted.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The fee has been waived.", "b": "The fee has been charged.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your exchange was approved.", "b": "Your exchange was cancelled.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The item is in stock.", "b": "The item is sold out.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your transfer succeeded.", "b": "Your transfer bounced.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your cheque has cleared.", "b": "Your cheque has bounced.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your ticket is waitlisted.", "b": "Your ticket is confirmed.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "The server is online.", "b": "The server is down.", "same": false, "category": "opposite_outcome", "language": "en"}
+{"a": "Your order {NUM} will arrive today.", "b": "Your order {NUM} will arrive tomorrow.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The technician will visit today.", "b": "The technician will visit tomorrow.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your bill is due this week.", "b": "Your bill is due next week.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The payment was made yesterday.", "b": "The payment was made today.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your appointment is this morning.", "b": "Your appointment is this evening.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The offer ends today.", "b": "The offer ends tomorrow.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your plan expires this month.", "b": "Your plan expires next month.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The branch opens on Monday.", "b": "The branch opens on Tuesday.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your flight departs tonight.", "b": "Your flight departs tomorrow morning.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "We will call you in the morning.", "b": "We will call you in the afternoon.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your refund will be credited within the next hour.", "b": "Your refund will be credited within the next week.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The outage started last night.", "b": "The outage started this morning.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your delivery is scheduled for Friday.", "b": "Your delivery is scheduled for Saturday.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The meeting is at noon.", "b": "The meeting is at midnight.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your EMI is due on the first of the month.", "b": "Your EMI is due on the last day of the month.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The sale started yesterday.", "b": "The sale starts tomorrow.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your card was blocked an hour ago.", "b": "Your card was blocked a week ago.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "The train leaves in the morning.", "b": "The train leaves at night.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Your premium is paid annually.", "b": "Your premium is paid monthly.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Please call us during the weekend.", "b": "Please call us during weekdays.", "same": false, "category": "relative_date", "language": "en"}
+{"a": "Money was transferred to your account.", "b": "Money was transferred from your account.", "same": false, "category": "direction", "language": "en"}
+{"a": "Please call us before 5 pm.", "b": "Please call us after 5 pm.", "same": false, "category": "direction", "language": "en"}
+{"a": "The flight is from Delhi to Mumbai.", "b": "The flight is from Mumbai to Delhi.", "same": false, "category": "direction", "language": "en"}
+{"a": "The seller will pay the shipping charges.", "b": "The buyer will pay the shipping charges.", "same": false, "category": "direction", "language": "en"}
+{"a": "You owe us Rs. {NUM}.", "b": "We owe you Rs. {NUM}.", "same": false, "category": "direction", "language": "en"}
+{"a": "Your number was moved to postpaid.", "b": "Your number was moved from postpaid.", "same": false, "category": "direction", "language": "en"}
+{"a": "The fee is charged above Rs. {NUM}.", "b": "The fee is charged below Rs. {NUM}.", "same": false, "category": "direction", "language": "en"}
+{"a": "Your package was sent to the warehouse.", "b": "Your package was sent from the warehouse.", "same": false, "category": "direction", "language": "en"}
+{"a": "The discount applies before tax.", "b": "The discount applies after tax.", "same": false, "category": "direction", "language": "en"}
+{"a": "The agent will call you.", "b": "You should call the agent.", "same": false, "category": "direction", "language": "en"}
+{"a": "The refund goes to your wallet.", "b": "The refund comes from your wallet.", "same": false, "category": "direction", "language": "en"}
+{"a": "Upload the document before paying.", "b": "Upload the document after paying.", "same": false, "category": "direction", "language": "en"}
+{"a": "The bus stops inside the station.", "b": "The bus stops outside the station.", "same": false, "category": "direction", "language": "en"}
+{"a": "Add the beneficiary first, then transfer the money.", "b": "Transfer the money first, then add the beneficiary.", "same": false, "category": "direction", "language": "en"}
+{"a": "Your landlord must sign the form.", "b": "You must sign the form for your landlord.", "same": false, "category": "direction", "language": "en"}
+{"a": "All your orders have shipped.", "b": "Some of your orders have shipped.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Only one refund is allowed.", "b": "One refund is allowed.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Both cards have been blocked.", "b": "One card has been blocked.", "same": false, "category": "quantity", "language": "en"}
+{"a": "None of the payments failed.", "b": "One of the payments failed.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Your entire balance has been refunded.", "b": "Part of your balance has been refunded.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Every item in your order is available.", "b": "Most items in your order are available.", "same": false, "category": "quantity", "language": "en"}
+{"a": "You can make unlimited calls.", "b": "You can make limited calls.", "same": false, "category": "quantity", "language": "en"}
+{"a": "The fee is charged once.", "b": "The fee is charged every month.", "same": false, "category": "quantity", "language": "en"}
+{"a": "All branches are open today.", "b": "Only a few branches are open today.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Your plan includes all channels.", "b": "Your plan includes the basic channels.", "same": false, "category": "quantity", "language": "en"}
+{"a": "You have used all your data.", "b": "You have used half your data.", "same": false, "category": "quantity", "language": "en"}
+{"a": "The offer is valid on all cards.", "b": "The offer is valid only on credit cards.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Each member gets a discount.", "b": "Only the primary member gets a discount.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Your full refund has been issued.", "b": "A partial refund has been issued.", "same": false, "category": "quantity", "language": "en"}
+{"a": "At least one document is required.", "b": "At most one document is required.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Several complaints have been resolved.", "b": "All complaints have been resolved.", "same": false, "category": "quantity", "language": "en"}
+{"a": "The service is free for all users.", "b": "The service is free for new users.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Your whole order was cancelled.", "b": "One item from your order was cancelled.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Most of your data is left.", "b": "Little of your data is left.", "same": false, "category": "quantity", "language": "en"}
+{"a": "You can withdraw any amount.", "b": "You can withdraw a limited amount.", "same": false, "category": "quantity", "language": "en"}
+{"a": "Your order has shipped.", "b": "Your order has shipped and will arrive tomorrow.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your payment is due.", "b": "Your payment is overdue.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your refund has been processed.", "b": "Your refund has been processed after deducting a fee.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your account has been opened.", "b": "Your account has been opened and a debit card is on its way.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The technician will visit.", "b": "The technician will visit and replace the meter.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your booking is confirmed.", "b": "Your booking is confirmed for two guests.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your card has been blocked.", "b": "Your card has been blocked and a new one is being issued.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The payment was received.", "b": "The payment was received with a late fee.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your plan has been changed.", "b": "Your plan has been changed and will cost more.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your complaint is registered.", "b": "Your complaint is registered and will take a week.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The flight is delayed.", "b": "The flight is delayed and your connection may be missed.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your claim is approved.", "b": "Your claim is approved subject to document verification.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your order was cancelled.", "b": "Your order was cancelled at your request.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Please visit the branch.", "b": "Please visit the branch with your passport.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The OTP has been sent.", "b": "The OTP has been sent to your old number.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your loan is sanctioned.", "b": "Your loan is sanctioned at a higher interest rate.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The delivery is on the way.", "b": "The delivery is on the way but running late.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your password was changed.", "b": "Your password was changed from a new device.", "same": false, "category": "added_info", "language": "en"}
+{"a": "The store is open.", "b": "The store is open until noon.", "same": false, "category": "added_info", "language": "en"}
+{"a": "Your ticket is booked.", "b": "Your ticket is booked but the seat is not assigned.", "same": false, "category": "added_info", "language": "en"}
+{"a": "I want to cancel my subscription.", "b": "I want to cancel my order.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your credit card bill is due.", "b": "Your electricity bill is due.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your savings account has been closed.", "b": "Your current account has been closed.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your train ticket is confirmed.", "b": "Your flight ticket is confirmed.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your debit card has been blocked.", "b": "Your credit card has been blocked.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your home loan is approved.", "b": "Your car loan is approved.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your postpaid bill is ready.", "b": "Your prepaid pack is ready.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "The Andheri branch is closed.", "b": "The Bandra branch is closed.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your health insurance is renewed.", "b": "Your car insurance is renewed.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your broadband connection is restored.", "b": "Your mobile connection is restored.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your pizza order is on the way.", "b": "Your grocery order is on the way.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your email address was updated.", "b": "Your phone number was updated.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your personal account was debited.", "b": "Your joint account was debited.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "The doctor's appointment is confirmed.", "b": "The dentist's appointment is confirmed.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your gas bill has been paid.", "b": "Your water bill has been paid.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your hotel booking is cancelled.", "b": "Your cab booking is cancelled.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your UPI PIN was reset.", "b": "Your ATM PIN was reset.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your first installment is paid.", "b": "Your last installment is paid.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "The morning shift is full.", "b": "The evening shift is full.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "Your daughter's policy is active.", "b": "Your son's policy is active.", "same": false, "category": "similar_topic", "language": "en"}
+{"a": "You must submit the form.", "b": "You may submit the form.", "same": false, "category": "modality", "language": "en"}
+{"a": "You can pay by card.", "b": "You must pay by card.", "same": false, "category": "modality", "language": "en"}
+{"a": "The fee might be charged.", "b": "The fee will be charged.", "same": false, "category": "modality", "language": "en"}
+{"a": "Your refund may take a week.", "b": "Your refund will take a week.", "same": false, "category": "modality", "language": "en"}
+{"a": "You should update your KYC.", "b": "You have to update your KYC.", "same": false, "category": "modality", "language": "en"}
+{"a": "The branch might be closed.", "b": "The branch is closed.", "same": false, "category": "modality", "language": "en"}
+{"a": "You are allowed to cancel.", "b": "You are required to cancel.", "same": false, "category": "modality", "language": "en"}
+{"a": "The technician could visit tomorrow.", "b": "The technician will visit tomorrow.", "same": false, "category": "modality", "language": "en"}
+{"a": "You need to verify your email.", "b": "You can verify your email later.", "same": false, "category": "modality", "language": "en"}
+{"a": "Payment is optional.", "b": "Payment is mandatory.", "same": false, "category": "modality", "language": "en"}
+{"a": "Your refund will take two days.", "b": "Your refund will take five days.", "same": false, "category": "number_words", "language": "en"}
+{"a": "You have one missed payment.", "b": "You have three missed payments.", "same": false, "category": "number_words", "language": "en"}
+{"a": "The offer is valid for one week.", "b": "The offer is valid for four weeks.", "same": false, "category": "number_words", "language": "en"}
+{"a": "Your order has two items.", "b": "Your order has twelve items.", "same": false, "category": "number_words", "language": "en"}
+{"a": "Delivery takes a couple of days.", "b": "Delivery takes a couple of weeks.", "same": false, "category": "number_words", "language": "en"}
+{"a": "You can add three beneficiaries.", "b": "You can add ten beneficiaries.", "same": false, "category": "number_words", "language": "en"}
+{"a": "Your plan gives double data.", "b": "Your plan gives half the data.", "same": false, "category": "number_words", "language": "en"}
+{"a": "The first installment is due.", "b": "The second installment is due.", "same": false, "category": "number_words", "language": "en"}
+{"a": "Your card expires in two months.", "b": "Your card expires in two years.", "same": false, "category": "number_words", "language": "en"}
+{"a": "Only a few seats are left.", "b": "Many seats are left.", "same": false, "category": "number_words", "language": "en"}
+{"a": "भुगतान सफल रहा।", "b": "भुगतान सफल नहीं रहा।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आप यह ऑर्डर रद्द कर सकते हैं।", "b": "आप यह ऑर्डर रद्द नहीं कर सकते।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपका कार्ड ब्लॉक कर दिया गया है।", "b": "आपका कार्ड ब्लॉक नहीं किया गया है।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपकी शिकायत हल हो गई है।", "b": "आपकी शिकायत अभी हल नहीं हुई है।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "यह सामान वापस किया जा सकता है।", "b": "यह सामान वापस नहीं किया जा सकता।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपको शुल्क देना होगा।", "b": "आपको शुल्क नहीं देना होगा।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपकी वारंटी इस मरम्मत को कवर करती है।", "b": "आपकी वारंटी इस मरम्मत को कवर नहीं करती।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "हम ग्राहक से संपर्क कर पाए।", "b": "हम ग्राहक से संपर्क नहीं कर पाए।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपका खाता आधार से जुड़ा है।", "b": "आपका खाता आधार से नहीं जुड़ा है।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "दुकान रविवार को खुली रहती है।", "b": "दुकान रविवार को खुली नहीं रहती।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "सामान स्टॉक में है।", "b": "सामान स्टॉक में नहीं है।", "same": false, "category": "negation_hi", "language": "hi"}
+{"a": "आपका लोन आवेदन स्वीकार हो गया।", "b": "आपका लोन आवेदन अस्वीकार हो गया।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "राशि आपके खाते में जमा हो गई है।", "b": "राशि आपके खाते से कट गई है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपकी बुकिंग कन्फर्म है।", "b": "आपकी बुकिंग रद्द है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका भुगतान पूरा हो गया है।", "b": "आपका भुगतान अभी बाकी है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका कनेक्शन बहाल हो गया है।", "b": "आपका कनेक्शन काट दिया गया है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपकी क्रेडिट सीमा बढ़ा दी गई है।", "b": "आपकी क्रेडिट सीमा घटा दी गई है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका खाता अनलॉक हो गया है।", "b": "आपका खाता लॉक हो गया है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "कीमत बढ़ गई है।", "b": "कीमत घट गई है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका दावा मंज़ूर हो गया है।", "b": "आपका दावा खारिज हो गया है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका चेक क्लियर हो गया है।", "b": "आपका चेक बाउंस हो गया है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका बैलेंस पर्याप्त है।", "b": "आपका बैलेंस अपर्याप्त है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका सिम चालू है।", "b": "आपका सिम बंद है।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "ओटीपी सही था।", "b": "ओटीपी गलत था।", "same": false, "category": "opposite_outcome_hi", "language": "hi"}
+{"a": "आपका ऑर्डर {NUM} आज पहुँचेगा।", "b": "आपका ऑर्डर {NUM} कल पहुँचेगा।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "तकनीशियन आज आएगा।", "b": "तकनीशियन कल आएगा।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "आपका बिल इस हफ्ते देय है।", "b": "आपका बिल अगले हफ्ते देय है।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "भुगतान कल किया गया था।", "b": "भुगतान आज किया गया है।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "ऑफ़र आज खत्म हो रहा है।", "b": "ऑफ़र कल खत्म होगा।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "आपकी अपॉइंटमेंट सुबह है।", "b": "आपकी अपॉइंटमेंट शाम को है।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "आपका प्लान इस महीने खत्म होगा।", "b": "आपका प्लान अगले महीने खत्म होगा।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "हम आपको सुबह कॉल करेंगे।", "b": "हम आपको दोपहर में कॉल करेंगे।", "same": false, "category": "relative_date_hi", "language": "hi"}
+{"a": "पैसे आपके खाते में भेजे गए।", "b": "पैसे आपके खाते से भेजे गए।", "same": false, "category": "direction_hi", "language": "hi"}
+{"a": "कृपया शाम 5 बजे से पहले कॉल करें।", "b": "कृपया शाम 5 बजे के बाद कॉल करें।", "same": false, "category": "direction_hi", "language": "hi"}
+{"a": "उड़ान दिल्ली से मुंबई की है।", "b": "उड़ान मुंबई से दिल्ली की है।", "same": false, "category": "direction_hi", "language": "hi"}
+{"a": "आप पर हमारे {NUM} रुपये बकाया हैं।", "b": "हम पर आपके {NUM} रुपये बकाया हैं।", "same": false, "category": "direction_hi", "language": "hi"}
+{"a": "भुगतान करने से पहले दस्तावेज़ अपलोड करें।", "b": "भुगतान करने के बाद दस्तावेज़ अपलोड करें।", "same": false, "category": "direction_hi", "language": "hi"}
+{"a": "आपके सभी ऑर्डर भेज दिए गए हैं।", "b": "आपके कुछ ऑर्डर भेज दिए गए हैं।", "same": false, "category": "quantity_hi", "language": "hi"}
+{"a": "दोनों कार्ड ब्लॉक कर दिए गए हैं।", "b": "एक कार्ड ब्लॉक कर दिया गया है।", "same": false, "category": "quantity_hi", "language": "hi"}
+{"a": "आपका पूरा रिफंड जारी कर दिया गया है।", "b": "आपका आंशिक रिफंड जारी कर दिया गया है।", "same": false, "category": "quantity_hi", "language": "hi"}
+{"a": "सिर्फ़ एक रिफंड की अनुमति है।", "b": "एक रिफंड की अनुमति है।", "same": false, "category": "quantity_hi", "language": "hi"}
+{"a": "सभी शाखाएँ आज खुली हैं।", "b": "आज केवल कुछ शाखाएँ खुली हैं।", "same": false, "category": "quantity_hi", "language": "hi"}
+{"a": "आपका ऑर्डर भेज दिया गया है।", "b": "आपका ऑर्डर भेज दिया गया है और कल पहुँचेगा।", "same": false, "category": "added_info_hi", "language": "hi"}
+{"a": "आपका कार्ड ब्लॉक कर दिया गया है।", "b": "आपका कार्ड ब्लॉक कर दिया गया है और नया कार्ड भेजा जा रहा है।", "same": false, "category": "added_info_hi", "language": "hi"}
+{"a": "आपका रिफंड प्रोसेस हो गया है।", "b": "शुल्क काटने के बाद आपका रिफंड प्रोसेस हो गया है।", "same": false, "category": "added_info_hi", "language": "hi"}
+{"a": "कृपया शाखा पर जाएँ।", "b": "कृपया अपने पासपोर्ट के साथ शाखा पर जाएँ।", "same": false, "category": "added_info_hi", "language": "hi"}
+{"a": "उड़ान में देरी है।", "b": "उड़ान में देरी है और आपकी कनेक्टिंग फ्लाइट छूट सकती है।", "same": false, "category": "added_info_hi", "language": "hi"}
+{"a": "मैं अपनी सदस्यता रद्द करना चाहता हूँ।", "b": "मैं अपना ऑर्डर रद्द करना चाहता हूँ।", "same": false, "category": "similar_topic_hi", "language": "hi"}
+{"a": "आपका क्रेडिट कार्ड बिल देय है।", "b": "आपका बिजली बिल देय है।", "same": false, "category": "similar_topic_hi", "language": "hi"}
+{"a": "आपका डेबिट कार्ड ब्लॉक हो गया है।", "b": "आपका क्रेडिट कार्ड ब्लॉक हो गया है।", "same": false, "category": "similar_topic_hi", "language": "hi"}
+{"a": "आपका होम लोन मंज़ूर हो गया है।", "b": "आपका कार लोन मंज़ूर हो गया है।", "same": false, "category": "similar_topic_hi", "language": "hi"}
+{"a": "आपकी ट्रेन टिकट कन्फर्म है।", "b": "आपकी फ्लाइट टिकट कन्फर्म है।", "same": false, "category": "similar_topic_hi", "language": "hi"}
+{"a": "आपको फॉर्म जमा करना होगा।", "b": "आप फॉर्म जमा कर सकते हैं।", "same": false, "category": "modality_or_number_hi", "language": "hi"}
+{"a": "भुगतान वैकल्पिक है।", "b": "भुगतान अनिवार्य है।", "same": false, "category": "modality_or_number_hi", "language": "hi"}
+{"a": "आपका रिफंड दो दिनों में आएगा।", "b": "आपका रिफंड पाँच दिनों में आएगा।", "same": false, "category": "modality_or_number_hi", "language": "hi"}
+{"a": "आपके ऑर्डर में दो सामान हैं।", "b": "आपके ऑर्डर में दस सामान हैं।", "same": false, "category": "modality_or_number_hi", "language": "hi"}
+{"a": "Aapka payment successful raha.", "b": "Aapka payment successful nahi raha.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka order aaj aayega.", "b": "Aapka order kal aayega.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Paise aapke account mein bheje gaye.", "b": "Paise aapke account se bheje gaye.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka loan approve ho gaya.", "b": "Aapka loan reject ho gaya.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aap yeh order cancel kar sakte hain.", "b": "Aap yeh order cancel nahi kar sakte.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapke saare orders ship ho gaye.", "b": "Aapke kuch orders ship ho gaye.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka card block ho gaya hai.", "b": "Aapka card unblock ho gaya hai.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka bill is hafte due hai.", "b": "Aapka bill agle hafte due hai.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka debit card block ho gaya.", "b": "Aapka credit card block ho gaya.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}
+{"a": "Aapka order ship ho gaya hai.", "b": "Aapka order ship ho gaya hai aur kal pahunchega.", "same": false, "category": "meaning_change_hinglish", "language": "hinglish"}

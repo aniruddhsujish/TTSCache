@@ -65,6 +65,40 @@ def test_converts_to_template_double_variable():
     )
 
 
+def test_numeric_date_becomes_a_date_slot():
+    words = "Your appointment is on 12/03/2026.".split()
+    assert find_variables(words) == [4]
+    assert make_template(words, [4]) == (
+        "Your appointment is on {DATE}.",
+        ["12/03/2026."],
+    )
+
+
+def test_time_becomes_a_time_slot():
+    words = "The technician will arrive at 5:30.".split()
+    assert (
+        make_template(words, find_variables(words))[0]
+        == "The technician will arrive at {TIME}."
+    )
+
+
+def test_number_and_date_in_one_sentence():
+    words = "Your order 4521 arrives on 12/03/2026.".split()
+    assert (
+        make_template(words, find_variables(words))[0]
+        == "Your order {NUM} arrives on {DATE}."
+    )
+
+
+def test_written_month_stays_fixed_text():
+    # known limitation: multi-word dates; the month becomes part of the template
+    words = "Your appointment is on 12 March.".split()
+    assert (
+        make_template(words, find_variables(words))[0]
+        == "Your appointment is on {NUM} March."
+    )
+
+
 @pytest.mark.asyncio
 async def test_slicing_keeps_the_fixed_words_only():
     tts = FakeTTS(delay=0)

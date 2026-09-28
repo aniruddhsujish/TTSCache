@@ -2,13 +2,13 @@
   {
     "strategy": "baseline",
     "threshold": 1,
-    "tts_calls": 2428,
-    "chars_requested": 423714,
-    "chars_saved": 207546,
-    "savings_pct": 49.0,
+    "tts_calls": 2487,
+    "chars_requested": 421486,
+    "chars_saved": 202132,
+    "savings_pct": 48.0,
     "outcomes": {
-      "hit": 2572,
-      "miss_stored": 2428,
+      "hit": 2513,
+      "miss_stored": 2487,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0
     }
@@ -16,28 +16,28 @@
   {
     "strategy": "baseline",
     "threshold": 2,
-    "tts_calls": 2940,
-    "chars_requested": 423714,
-    "chars_saved": 158776,
-    "savings_pct": 37.5,
+    "tts_calls": 3002,
+    "chars_requested": 421486,
+    "chars_saved": 152564,
+    "savings_pct": 36.2,
     "outcomes": {
-      "hit": 2060,
-      "miss_stored": 512,
-      "miss_below_threshold": 2428,
+      "hit": 1998,
+      "miss_stored": 514,
+      "miss_below_threshold": 2488,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "baseline",
     "threshold": 5,
-    "tts_calls": 3590,
-    "chars_requested": 423714,
-    "chars_saved": 105419,
-    "savings_pct": 24.9,
+    "tts_calls": 3620,
+    "chars_requested": 421486,
+    "chars_saved": 101519,
+    "savings_pct": 24.1,
     "outcomes": {
-      "hit": 1410,
+      "hit": 1380,
       "miss_stored": 157,
-      "miss_below_threshold": 3433,
+      "miss_below_threshold": 3463,
       "miss_quality_rejected": 0
     }
   },
@@ -45,26 +45,26 @@
     "strategy": "baseline",
     "threshold": 10,
     "tts_calls": 4097,
-    "chars_requested": 423714,
-    "chars_saved": 67906,
-    "savings_pct": 16.0,
+    "chars_requested": 421486,
+    "chars_saved": 65810,
+    "savings_pct": 15.6,
     "outcomes": {
       "hit": 903,
-      "miss_stored": 75,
-      "miss_below_threshold": 4022,
+      "miss_stored": 67,
+      "miss_below_threshold": 4030,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "segment",
     "threshold": 1,
-    "tts_calls": 1445,
-    "chars_requested": 417197,
-    "chars_saved": 361648,
-    "savings_pct": 86.7,
+    "tts_calls": 1518,
+    "chars_requested": 414917,
+    "chars_saved": 356933,
+    "savings_pct": 86.0,
     "outcomes": {
-      "hit": 10072,
-      "miss_stored": 1445,
+      "hit": 10051,
+      "miss_stored": 1518,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0
     }
@@ -72,55 +72,55 @@
   {
     "strategy": "segment",
     "threshold": 2,
-    "tts_calls": 1710,
-    "chars_requested": 417197,
-    "chars_saved": 343859,
-    "savings_pct": 82.4,
+    "tts_calls": 1798,
+    "chars_requested": 414917,
+    "chars_saved": 338542,
+    "savings_pct": 81.6,
     "outcomes": {
-      "hit": 9807,
-      "miss_stored": 265,
-      "miss_below_threshold": 1445,
+      "hit": 9771,
+      "miss_stored": 280,
+      "miss_below_threshold": 1518,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "segment",
     "threshold": 5,
-    "tts_calls": 2323,
-    "chars_requested": 417197,
-    "chars_saved": 301674,
-    "savings_pct": 72.3,
+    "tts_calls": 2390,
+    "chars_requested": 414917,
+    "chars_saved": 298029,
+    "savings_pct": 71.8,
     "outcomes": {
-      "hit": 9194,
-      "miss_stored": 179,
-      "miss_below_threshold": 2144,
+      "hit": 9179,
+      "miss_stored": 162,
+      "miss_below_threshold": 2228,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "segment",
     "threshold": 10,
-    "tts_calls": 2809,
-    "chars_requested": 417197,
-    "chars_saved": 272632,
-    "savings_pct": 65.3,
+    "tts_calls": 2873,
+    "chars_requested": 414917,
+    "chars_saved": 269238,
+    "savings_pct": 64.9,
     "outcomes": {
-      "hit": 8708,
-      "miss_stored": 65,
-      "miss_below_threshold": 2744,
+      "hit": 8696,
+      "miss_stored": 63,
+      "miss_below_threshold": 2810,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "template",
     "threshold": 1,
-    "tts_calls": 1439,
-    "chars_requested": 417197,
-    "chars_saved": 394660,
-    "savings_pct": 94.6,
+    "tts_calls": 1509,
+    "chars_requested": 414917,
+    "chars_saved": 391482,
+    "savings_pct": 94.4,
     "outcomes": {
-      "hit": 11663,
-      "miss_stored": 1439,
+      "hit": 11721,
+      "miss_stored": 1509,
       "miss_below_threshold": 0,
       "miss_quality_rejected": 0
     }
@@ -128,42 +128,42 @@
   {
     "strategy": "template",
     "threshold": 2,
-    "tts_calls": 1719,
-    "chars_requested": 417197,
-    "chars_saved": 377483,
-    "savings_pct": 90.5,
+    "tts_calls": 1806,
+    "chars_requested": 414917,
+    "chars_saved": 373952,
+    "savings_pct": 90.1,
     "outcomes": {
-      "hit": 11442,
-      "miss_stored": 277,
-      "miss_below_threshold": 1442,
+      "hit": 11482,
+      "miss_stored": 293,
+      "miss_below_threshold": 1513,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "template",
     "threshold": 5,
-    "tts_calls": 2345,
-    "chars_requested": 417197,
-    "chars_saved": 335464,
+    "tts_calls": 2411,
+    "chars_requested": 414917,
+    "chars_saved": 333402,
     "savings_pct": 80.4,
     "outcomes": {
-      "hit": 10829,
-      "miss_stored": 179,
-      "miss_below_threshold": 2166,
+      "hit": 10847,
+      "miss_stored": 162,
+      "miss_below_threshold": 2249,
       "miss_quality_rejected": 0
     }
   },
   {
     "strategy": "template",
     "threshold": 10,
-    "tts_calls": 2830,
-    "chars_requested": 417197,
-    "chars_saved": 306762,
-    "savings_pct": 73.5,
+    "tts_calls": 2891,
+    "chars_requested": 414917,
+    "chars_saved": 304568,
+    "savings_pct": 73.4,
     "outcomes": {
-      "hit": 10267,
-      "miss_stored": 61,
-      "miss_below_threshold": 2769,
+      "hit": 10276,
+      "miss_stored": 59,
+      "miss_below_threshold": 2832,
       "miss_quality_rejected": 0
     }
   }
