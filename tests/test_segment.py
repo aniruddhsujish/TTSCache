@@ -65,7 +65,7 @@ async def test_cached_only_after_five_distinct_user(tmp_path):
         await strategy.get_audio("Your order has been shipped.", PROFILE, f"user{i}")
     assert tts.calls == 5
 
-    await strategy.get_audio("Your order has been shipped.", PROFILE, f"user5")
+    await strategy.get_audio("Your order has been shipped.", PROFILE, "user5")
     assert tts.calls == 5
 
 
