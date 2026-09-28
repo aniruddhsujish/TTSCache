@@ -4,7 +4,7 @@
 
 The PoC implements the caching decision logic between an agent's text output and a TTS call, and a harness that
 compares caching strategies on the same synthetic traffic. TTS sits behind one interface; the default backend is a
-stub. Not built (described in `docs/ARCHITECTURE.md`): streaming, a real provider integration, the offline
+stub. Not built (described in `ARCHITECTURE.md`): streaming, a real provider integration, the offline
 alias-map pipeline, shadow mode, and the per-language template switch.
 
 ### Assumptions
@@ -14,7 +14,7 @@ alias-map pipeline, shadow mode, and the per-language template switch.
 
 ### Guiding principle
 Never play words the agent didn't say. A wrong match is worse than a missed one; when unsure, synthesize.
-The only exception is the gated semantic strategy (§5.4), which may play a same-meaning paraphrase.
+The only exception is the gated semantic strategy (§5.3), which may play a same-meaning paraphrase.
 
 ## 2. Strategies
 
@@ -49,13 +49,13 @@ tts_cache/
   tts/fake.py             FakeTTS: fake audio + timestamps, delay, failure rate, cancellable
   strategies/baseline.py, segment.py, template.py, semantic.py
 harness/
-  generate_dataset.py     synthetic traffic generator → data/traffic.jsonl
-  compare.py              runs every strategy × threshold → table, results/results.json, chart
+  generate_dataset.py     base traffic generator; writes base + varied traffic → data/traffic.jsonl
+  varied_traffic.py       high-variance traffic, meaning labels for every sentence (base traffic included)
+  compare.py              runs every strategy × threshold, grades semantic matches → tables, results.json, chart
 experiments/
-  check_models.py         smoke test for the semantic models
   semantic_eval.py        grades similarity + NLI against labeled pairs
-  semantic_pairs*.jsonl   30-pair and 416-pair hand-labeled sets
-data/traffic.jsonl        committed dataset used for all results
+  semantic_pairs.jsonl    416 labeled sentence pairs
+data/traffic.jsonl        committed dataset used for all results: 13,000 requests (en, hi, kn), meaning-labeled
 tests/
 ```
 
@@ -81,7 +81,9 @@ tests/
 - Template entries use `build_key("[template] " + template_text, profile)` so they never collide with sentences.
 
 ### 4.4 Admission (counter)
-- `record(key, user_id)` on arrival of every unit, before lookup; `should_admit(key)` after synthesis.
+- `record(key, user_id)` on arrival of a unit, before lookup; `should_admit(key)` after synthesis.
+  Not recorded: an exact hit on a sentence with slots (§5.2 step 2) and a semantic hit (§5.3); both are served
+  without being counted toward their own admission.
 - Admit when **≥ 5 distinct users** (configurable) were seen within **7 days** (configurable).
 - Stores only `HMAC-SHA256(secret, key)` and `HMAC-SHA256(secret, user_id)`.
 - Per key, at most `threshold` users are tracked; old visits are pruned on access; `prune_all()` sweeps all keys.
@@ -113,7 +115,8 @@ tests/
   with its character count.
 - `savings_ratio = chars_saved / chars_requested`; `hit` and `semantic_hit` count as saved.
 - Template and semantic hits record only the fixed characters; each slot value records its own outcome, so
-  characters requested equal the sentence length and stay comparable across strategies.
+  characters requested equal the sentence length. Sentence-level strategies therefore request the same total;
+  the baseline requests ~1.4% more, because a whole response also includes the spaces between its sentences.
 
 ### 4.9 Fallback (pipeline)
 - `CachePipeline.speak(text, profile, user_id)` calls the strategy.
@@ -155,24 +158,34 @@ Before falling through to §5.2, when the exact sentence and its template would 
 3. Candidates = indexed texts for this profile with the same slot sequence, excluding the query itself.
    The index holds only texts stored via `_on_stored` that contain no raw slot values (never bare values like `4521.`).
 4. `matcher.best_match`: top candidate by cosine similarity; accept if similarity ≥ **0.85** and NLI entailment
-   probability ≥ **0.95 in both directions**.
+   probability ≥ **0.95 in both directions**. The second direction is checked only if the first passes (same
+   decision, half the NLI passes). Models run on a GPU (CUDA or Apple MPS) when available, else CPU.
 5. Accepted: serve the matched sentence, or the matched template's fixed parts + this request's values; record
    `semantic_hit`; log `(query, matched)` for review. Missing parts (expired/evicted) → normal path.
 6. Each value is spoken with the trailing punctuation of the slot it fills in the **matched** wording, not the
    query's (a sentence-final `7788.` placed mid-sentence becomes `7788`).
 
 ## 6. Semantic evaluation (experiment)
-- Pairs file: `{a, b, same, category, language}`; labels written by hand, reviewed by me.
+- Pairs file: `{a, b, same, category, language}`; pairs and labels AI-generated, then reviewed by me.
 - Report, for similarity thresholds 0.80–0.95, with and without NLI: safe hits, wrong hits, missed paraphrases;
   per-category matches at 0.85; NLI confidence sweep; wrong pairs by confidence; latency.
 - Decision rule: a setting qualifies only with **0 wrong hits and meaningfully > 0 safe hits**.
-- Result: qualifies at confidence ≥ 0.95 (57/175 safe, 0/241 wrong). Cutoff chosen on the same set (held-out check
-  pending).
+- Result on the pairs: qualifies at confidence ≥ 0.95 (57/175 safe, 0/241 wrong). Cutoff chosen on the same set.
+- Result on the traffic (§7, threshold 5): 989 semantic hits from 16 distinct pairs; 2 pairs were wrong by label,
+  **37 wrong hits** ("delivered" served as "shipped" in Hindi; "on {DATE}" served as "by {DATE}"), for +0.2 points
+  of savings. The pairs-set result did not hold on unseen traffic, so semantic matching is not recommended live.
 
 ## 7. Harness
+- Dataset (`python -m harness.generate_dataset`, fixed seeds): 5,000 base requests interleaved with 8,000
+  high-variance requests: several wordings per intent, near-miss intents side by side, alphanumeric order IDs,
+  varied currency and date formats, customer names, free-form sentences. ~64% English, ~32% Hindi, ~4% Kannada
+  (no rules file, to exercise the language-agnostic defaults). Each request carries one meaning label per sentence.
 - Loads `data/traffic.jsonl`; for each strategy and threshold `[1, 2, 5, 10, 20]`, runs all requests through a fresh
-  cache with `FakeTTS(delay=0)`; headline at threshold 5.
-- Outputs: tables, `results/results.json` (including semantic matches), `results/savings_vs_threshold.png`.
+  cache with `FakeTTS(delay=0)`; headline at threshold 5. A voice profile is built for any language in the traffic.
+- Grading: every semantic `(query, matched)` pair is checked against the meaning labels (`ok` / `WRONG` / `?` if
+  unlabeled); `semantic_wrong` counts wrong hits per run.
+- Outputs: progress per run, tables, `results/results.json` (including graded semantic matches),
+  `results/savings_vs_threshold.png`.
 - The semantic strategy runs only if its models are installed (`requirements-semantic.txt`); one matcher is shared
   across runs.
 

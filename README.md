@@ -45,7 +45,7 @@ its models are installed.
 ```bash
 pip install -r requirements-semantic.txt     # torch, sentence-transformers, transformers (~1–1.5 GB on first use)
 python -m harness.compare                    # now includes semantic; about 4 min on an Apple GPU, longer on CPU only
-python -m experiments.semantic_eval          # grades the matcher on 416 hand-labeled pairs
+python -m experiments.semantic_eval          # grades the matcher on 416 labeled pairs
 ```
 
 The harness grades each semantic match against the dataset's meaning labels and prints every "played X in place of

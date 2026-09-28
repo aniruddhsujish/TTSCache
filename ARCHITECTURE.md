@@ -92,7 +92,7 @@ The idea: if nothing is cached for "We have shipped your order 7788", play the c
 
 What I found:
 - **Similarity alone isn't safe.** "Money was transferred to your account" and "…from your account" score 0.987, higher than most real paraphrases.
-- On 416 hand-labeled pairs in English, Hindi and Hinglish, the NLI gate made **0 wrong matches** at 95% confidence and caught a third of the true paraphrases.
+- On 416 labeled pairs (AI-generated, reviewed by me) in English, Hindi and Hinglish, the NLI gate made **0 wrong matches** at 95% confidence and caught a third of the true paraphrases.
 - On the traffic it added only **0.2 points**. It made 989 semantic hits from 16 distinct pairs, and 2 of those pairs were wrong, **37 wrong answers** in total. A Hindi "your order has been delivered" was played as "your order has been shipped", and "it should reach you on {date}" as "you should receive it by {date}".
 - The gain is small because the paraphrases were common enough to get cached on their own anyway. Gain would rise with higher variance in content of similar meaning that's only seen by a couple users.
 - Kannada, which the NLI model wasn't trained on, produced no semantic matches at all.
