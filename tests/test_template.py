@@ -151,7 +151,7 @@ def build_template(tmp_path):
 async def test_new_build_only_synthesizes_the_number_on_cache_hit(tmp_path):
     strategy, tts = build_template(tmp_path)
 
-    await strategy.get_audio("your order 4521 has shipped.", PROFILE, "user1")
+    await strategy.get_audio("Your order 4521 has shipped.", PROFILE, "user1")
     assert tts.calls == 1
 
     [result] = await strategy.get_audio(

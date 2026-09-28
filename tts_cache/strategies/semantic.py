@@ -99,15 +99,16 @@ class SemanticTemplateStrategy(TemplateStrategy):
             )
             if fixed is None:
                 return None
-            self.metrics.record(
-                Outcome.SEMANTIC_HIT, len(sentence) - sum(len(v) for v in values)
-            )
             # the slot may sit elsewhere in the matched wording: speak each value with the
             # punctuation of the slot it lands in, not the one it had in the query
             spoken = [
                 v.rstrip(TRAILING_PUNCTUATION) + p
                 for v, p in zip(values, slot_punctuation(matched))
             ]
+            # values record their own outcomes; fixed + values must add up to the sentence
+            self.metrics.record(
+                Outcome.SEMANTIC_HIT, len(sentence) - sum(len(v) for v in spoken)
+            )
             variables = [
                 await self._get_or_synthesize(v, profile, user_id) for v in spoken
             ]

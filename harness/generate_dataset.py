@@ -4,7 +4,10 @@ Usage:
     python -m harness.generate_dataset
     python -m harness.generate_dataset --output data/my_traffic.jsonl
 
-Assumptions (state these in the doc):
+The dataset = 5,000 base requests (below) interleaved with 8,000 high-variance requests from
+harness/varied_traffic.py. Every sentence carries a meaning label, so the harness can grade semantic hits.
+
+Base traffic assumptions:
 - Responses = optional greeting (60%) + one body sentence + optional closing (60%)
 - Body: 40% fixed FAQ-style, 35% with a variable (order number / amount / days), 25% long tail
 - Fixed and variable bodies include paraphrases (same meaning, different words) and
@@ -13,9 +16,6 @@ Assumptions (state these in the doc):
 - 30% Hindi, 5,000 requests from 800 users
 - Popularity is Zipf-skewed (s = 1.1): a few phrases are very common, most are rare
 - Fixed seed, so every run produces identical traffic
-
-This dataset measures savings. It cannot grade whether a semantic hit was correct;
-that needs a separate hand-labeled set of sentence pairs.
 """
 
 import argparse
@@ -32,6 +32,7 @@ class Request:
     user_id: str
     language: str
     text: str
+    meanings: list[str] | None = None  # one label per sentence; same label = same meaning
 
 
 OPENINGS = {
@@ -229,9 +230,16 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    requests = generate()
+    # imported here: varied_traffic builds on this module's Request and base lists
+    from harness.varied_traffic import generate_varied, interleave, label_base
+
+    base = label_base(generate())
+    varied = generate_varied()
+    requests = interleave(base, varied, random.Random(3))
     save(requests, args.output)
-    print(f"Wrote {len(requests)} requests to {args.output}")
+    print(
+        f"Wrote {len(requests)} requests ({len(base)} base + {len(varied)} varied) to {args.output}"
+    )
 
 
 if __name__ == "__main__":

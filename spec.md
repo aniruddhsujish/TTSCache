@@ -149,7 +149,8 @@ Per sentence:
 
 ### 5.3 Semantic template
 Before falling through to §5.2, when the exact sentence and its template would both miss:
-1. Skip if the sentence has more than `MAX_VARIABLES` slot words.
+1. Skip if the sentence has more than `MAX_VARIABLES` slot words, or the same slot type twice (values are placed
+   by position, and NLI cannot tell two identical placeholders apart, so their roles could swap).
 2. Query = template text (or the sentence if it has no slots).
 3. Candidates = indexed texts for this profile with the same slot sequence, excluding the query itself.
    The index holds only texts stored via `_on_stored` that contain no raw slot values (never bare values like `4521.`).
@@ -157,6 +158,8 @@ Before falling through to §5.2, when the exact sentence and its template would 
    probability ≥ **0.95 in both directions**.
 5. Accepted: serve the matched sentence, or the matched template's fixed parts + this request's values; record
    `semantic_hit`; log `(query, matched)` for review. Missing parts (expired/evicted) → normal path.
+6. Each value is spoken with the trailing punctuation of the slot it fills in the **matched** wording, not the
+   query's (a sentence-final `7788.` placed mid-sentence becomes `7788`).
 
 ## 6. Semantic evaluation (experiment)
 - Pairs file: `{a, b, same, category, language}`; labels written by hand, reviewed by me.
@@ -243,3 +246,6 @@ Before falling through to §5.2, when the exact sentence and its template would 
 43. A semantic template match plays the matched wording with this request's number.
 44. An exact hit never consults the matcher.
 45. Bare numeric values are never added to the index.
+46. A value takes the punctuation of its slot in the matched wording (mid-sentence → none; sentence-final → `.`);
+    characters requested still equal the sentence length.
+47. A sentence with the same slot type twice never gets a semantic hit, even when the matcher would accept it.

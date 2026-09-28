@@ -9,10 +9,15 @@ import argparse
 import asyncio
 import json
 import tempfile
-from functools import partial
+import time
+from collections import defaultdict
+from functools import cache, partial
 from pathlib import Path
 
 from harness.generate_dataset import DEFAULT_OUTPUT, Request, load
+from harness.varied_traffic import meaning_key
+from tts_cache.normalize import normalize
+from tts_cache.splitter import split_sentences
 from tts_cache.coalescing import Coalescer
 from tts_cache.counter import RequestCounter
 from tts_cache.keys import VoiceProfile
@@ -28,14 +33,12 @@ from tts_cache.tts.fake import FakeTTS
 THRESHOLDS = [1, 2, 5, 10, 20]
 HEADLINE_THRESHOLD = 5
 
-PROFILES = {
-    "en": VoiceProfile(
-        language="en", voice="v1", model="m1", output_format="pcm_16000"
-    ),
-    "hi": VoiceProfile(
-        language="hi", voice="v1", model="m1", output_format="pcm_16000"
-    ),
-}
+@cache
+def profile(language: str) -> VoiceProfile:
+    """One voice profile per language, for any language in the traffic (configured or not)."""
+    return VoiceProfile(
+        language=language, voice="v1", model="m1", output_format="pcm_16000"
+    )
 
 
 def build_strategies() -> dict:
@@ -50,6 +53,7 @@ def build_strategies() -> dict:
             sim_threshold=0.85, conf_threshold=0.95
         )  # loads both models once
         strategies["semantic"] = partial(SemanticTemplateStrategy, matcher=matcher)
+        print(f"(semantic models running on {matcher.device})")
     except ImportError:
         print(
             "(semantic models not installed: pip install -r requirements-semantic.txt; skipping)"
@@ -58,7 +62,11 @@ def build_strategies() -> dict:
 
 
 async def run_one_strategy(
-    name: str, make_strategy, requests: list[Request], threshold: int
+    name: str,
+    make_strategy,
+    requests: list[Request],
+    threshold: int,
+    meanings: dict[str, set[str]],
 ) -> dict:
     """Run one strategy over all requests with a fresh, empty cache."""
     with tempfile.TemporaryDirectory() as folder:
@@ -72,7 +80,7 @@ async def run_one_strategy(
             metrics,
         )
         for r in requests:
-            await strategy.get_audio(r.text, PROFILES[r.language], r.user_id)
+            await strategy.get_audio(r.text, profile(r.language), r.user_id)
 
     row = {
         "strategy": name,
@@ -85,10 +93,31 @@ async def run_one_strategy(
     }
     if hasattr(strategy, "semantic_matches"):
         row["semantic_matches"] = [
-            {"query": q, "matched": m, "count": c}
+            {"query": q, "matched": m, "count": c, "correct": grade(q, m, meanings)}
             for (q, m), c in strategy.semantic_matches.most_common()
         ]
+        row["semantic_wrong"] = sum(
+            m["count"] for m in row["semantic_matches"] if m["correct"] is False
+        )
     return row
+
+
+def meaning_index(requests: list[Request]) -> dict[str, set[str]]:
+    """Cache unit (sentence or template) → the meaning labels it was generated with."""
+    index = defaultdict(set)
+    for r in requests:
+        if r.meanings:
+            sentences = split_sentences(normalize(r.text, r.language), r.language)
+            for sentence, meaning in zip(sentences, r.meanings):
+                index[meaning_key(sentence)].add(meaning)
+    return index
+
+
+def grade(query: str, matched: str, meanings: dict[str, set[str]]) -> bool | None:
+    """Was serving `matched` in place of `query` correct? None if either is unlabeled."""
+    if not meanings.get(query) or not meanings.get(matched):
+        return None
+    return bool(meanings[query] & meanings[matched])
 
 
 def print_table(rows: list[dict]) -> None:
@@ -112,10 +141,14 @@ def print_semantic_review(rows: list[dict]) -> None:
             matches = r["semantic_matches"]
             print(
                 f"\nSemantic matches to review @ threshold {HEADLINE_THRESHOLD} "
-                f"({len(matches)} distinct, {r['outcomes']['semantic_hit']} hits):"
+                f"({len(matches)} distinct, {r['outcomes']['semantic_hit']} hits, "
+                f"{r['semantic_wrong']} wrong by label):"
             )
+            marks = {True: "ok", False: "WRONG", None: "?"}
             for m in matches:
-                print(f"  {m['count']:>4}×  {m['query']}  →  {m['matched']}")
+                print(
+                    f"  {marks[m['correct']]:>5} {m['count']:>4}×  {m['query']}  →  {m['matched']}"
+                )
 
 
 def draw_chart(rows: list[dict], names: list[str], path: Path) -> None:
@@ -158,13 +191,20 @@ async def main() -> None:
     requests = load(args.data)
     print(f"Loaded {len(requests)} requests from {args.data}\n")
 
+    meanings = meaning_index(requests)
     strategies = build_strategies()
     rows = []
     for name, make_strategy in strategies.items():
         for threshold in THRESHOLDS:
+            started = time.perf_counter()
+            print(f"  running {name} @ threshold {threshold} ...", end=" ", flush=True)
             rows.append(
-                await run_one_strategy(name, make_strategy, requests, threshold)
+                await run_one_strategy(
+                    name, make_strategy, requests, threshold, meanings
+                )
             )
+            print(f"{time.perf_counter() - started:.0f}s", flush=True)
+    print()
 
     print(f"Headline (threshold = {HEADLINE_THRESHOLD}):")
     print_table([r for r in rows if r["threshold"] == HEADLINE_THRESHOLD])

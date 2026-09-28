@@ -58,7 +58,7 @@ async def test_semantic_template_keeps_this_requests_number(tmp_path):
     matcher = FakeMatcher(
         ("We have shipped your order {NUM}.", "Your order {NUM} has been shipped.")
     )
-    strategy, tts, _ = build(tmp_path, matcher)
+    strategy, tts, metrics = build(tmp_path, matcher)
 
     await strategy.get_audio("Your order 4521 has been shipped.", PROFILE, "u1")
     [result] = await strategy.get_audio(
@@ -66,6 +66,8 @@ async def test_semantic_template_keeps_this_requests_number(tmp_path):
     )
 
     assert tts.calls == 2  # only "7788" synthesized
+    sentences = "Your order 4521 has been shipped." + "We have shipped your order 7788."
+    assert metrics.chars_requested == len(sentences)
     assert [t.word for t in result.timestamps] == [
         "Your",
         "order",
