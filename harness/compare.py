@@ -27,7 +27,7 @@ STRATEGIES = {
     "segment": SegmentStrategy,
     "template": TemplateStrategy,
 }
-THRESHOLDS = [1, 2, 5, 10, 20]
+THRESHOLDS = [1, 2, 5, 10]
 HEADLINE_THRESHOLD = 5
 
 PROFILES = {
@@ -78,6 +78,41 @@ def print_table(rows: list[dict]) -> None:
         )
 
 
+def draw_chart(rows: list[dict], path: Path) -> None:
+    """Savings (%) against admission threshold, one line per strategy."""
+    try:
+        import matplotlib
+
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        print("(matplotlib not installed; skipping chart)")
+        return
+
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    for name in STRATEGIES:
+        points = [r for r in rows if r["strategy"] == name]
+        ax.plot(
+            [p["threshold"] for p in points],
+            [p["savings_pct"] for p in points],
+            marker="o",
+            label=name,
+        )
+
+    ax.axvline(
+        HEADLINE_THRESHOLD, linestyle="--", color="grey", alpha=0.6
+    )  # mark the chosen threshold
+    ax.set_xlabel("Admission threshold (distinct users)")
+    ax.set_ylabel("TTS characters saved (%)")
+    ax.set_title("TTS savings by strategy and admission threshold")
+    ax.set_ylim(0, 100)
+    ax.grid(alpha=0.3)
+    ax.legend()
+    fig.savefig(path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Chart saved to {path}")
+
+
 async def main() -> None:
     parser = argparse.ArgumentParser(description="Compare caching strategies.")
     parser.add_argument("--data", default=DEFAULT_OUTPUT, help="dataset file path")
@@ -100,6 +135,7 @@ async def main() -> None:
     out = Path("results")
     out.mkdir(exist_ok=True)
     (out / "results.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
+    draw_chart(rows, out / "savings_vs_threshold.png")
 
 
 if __name__ == "__main__":

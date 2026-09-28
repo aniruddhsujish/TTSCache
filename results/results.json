@@ -56,20 +56,6 @@
     }
   },
   {
-    "strategy": "baseline",
-    "threshold": 20,
-    "tts_calls": 4499,
-    "chars_requested": 423714,
-    "chars_saved": 37646,
-    "savings_pct": 8.9,
-    "outcomes": {
-      "hit": 501,
-      "miss_stored": 23,
-      "miss_below_threshold": 4476,
-      "miss_quality_rejected": 0
-    }
-  },
-  {
     "strategy": "segment",
     "threshold": 1,
     "tts_calls": 1445,
@@ -126,20 +112,6 @@
     }
   },
   {
-    "strategy": "segment",
-    "threshold": 20,
-    "tts_calls": 3266,
-    "chars_requested": 417197,
-    "chars_saved": 254293,
-    "savings_pct": 61.0,
-    "outcomes": {
-      "hit": 8251,
-      "miss_stored": 38,
-      "miss_below_threshold": 3228,
-      "miss_quality_rejected": 0
-    }
-  },
-  {
     "strategy": "template",
     "threshold": 1,
     "tts_calls": 1439,
@@ -192,20 +164,6 @@
       "hit": 10267,
       "miss_stored": 61,
       "miss_below_threshold": 2769,
-      "miss_quality_rejected": 0
-    }
-  },
-  {
-    "strategy": "template",
-    "threshold": 20,
-    "tts_calls": 3270,
-    "chars_requested": 417197,
-    "chars_saved": 289060,
-    "savings_pct": 69.3,
-    "outcomes": {
-      "hit": 9676,
-      "miss_stored": 34,
-      "miss_below_threshold": 3236,
       "miss_quality_rejected": 0
     }
   }
