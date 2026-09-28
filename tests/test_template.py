@@ -1,4 +1,17 @@
-from tts_cache.strategies.template import find_variables, make_template
+import pytest
+
+from tts_cache.strategies.template import (
+    find_variables,
+    interleave,
+    join,
+    make_template,
+    slice_fixed_parts,
+    to_byte,
+)
+from tts_cache.tts.fake import FakeTTS
+from tts_cache.keys import VoiceProfile
+
+PROFILE = VoiceProfile(language="en", voice="v1", model="m1", output_format="pcm_16000")
 
 
 def test_finds_one_variable_in_the_middle():
@@ -45,3 +58,36 @@ def test_converts_to_template_double_variable():
         "Your order {NUM} will arrive in {NUM} days.",
         ["4521", "3"],
     )
+
+
+@pytest.mark.asyncio
+async def test_slicing_keeps_the_fixed_words_only():
+    tts = FakeTTS(delay=0)
+    result = await tts.synthesize("Your order 4521 has shipped.", PROFILE)
+
+    parts = slice_fixed_parts(result, [2])
+
+    assert [ts.word for ts in parts[0].timestamps] == ["Your", "order"]
+    assert [ts.word for ts in parts[1].timestamps] == ["has", "shipped."]
+    assert parts[1].timestamps[0].start == 0.0
+    assert len(parts[0].audio) == to_byte(0.6, result.sample_rate)
+
+
+@pytest.mark.asyncio
+async def test_slice_then_join_rebuilds_the_original_sentence():
+    tts = FakeTTS(delay=0)
+    result = await tts.synthesize("Your order 4521 has shipped.", PROFILE)
+
+    fixed = slice_fixed_parts(result, [2])
+    number = await tts.synthesize("4521", PROFILE)
+    rebuilt = join(interleave(fixed, [number]))
+
+    assert rebuilt.audio == result.audio
+    assert [ts.word for ts in rebuilt.timestamps] == [
+        "Your",
+        "order",
+        "4521",
+        "has",
+        "shipped.",
+    ]
+    assert rebuilt.timestamps[3].start == pytest.approx(0.9)

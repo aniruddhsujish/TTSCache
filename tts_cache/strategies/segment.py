@@ -28,32 +28,36 @@ class SegmentStrategy:
     def _split_into_cache_units(self, normalized: str, language: str) -> list[str]:
         return split_sentences(normalized, language)
 
+    async def _get_or_synthesize(
+        self, text: str, profile: VoiceProfile, user_id: str
+    ) -> TTSResult:
+        """Serve from cache if available, else synthesize the audio"""
+        key = build_key(text, profile)
+        self.counter.record(key, user_id)
+        found = self.storage.get(key)
+        if found is not None:
+            self.metrics.record(Outcome.HIT, len(text))
+            return found
+        else:
+            result = await self.coalescer.run(
+                key, lambda: self.tts.synthesize(text, profile)
+            )
+            if not self.counter.should_admit(key):
+                self.metrics.record(Outcome.MISS_BELOW_THRESHOLD, len(text))
+            elif not passes_quality(result, text):
+                self.metrics.record(Outcome.MISS_QUALITY_REJECTED, len(text))
+            else:
+                self.storage.put(key, result)
+                self.metrics.record(Outcome.MISS_STORED, len(text))
+            return result
+
     async def get_audio(
         self, text: str, profile: VoiceProfile, user_id: str
     ) -> list[TTSResult]:
         normalized = normalize(text, profile.language)
         sentences = self._split_into_cache_units(normalized, profile.language)
 
-        results = []
-
-        for sentence in sentences:
-            key = build_key(sentence, profile)
-            self.counter.record(key, user_id)
-            found = self.storage.get(key)
-            if found is not None:
-                self.metrics.record(Outcome.HIT, len(sentence))
-                results.append(found)
-            else:
-                result = await self.coalescer.run(
-                    key, lambda: self.tts.synthesize(sentence, profile)
-                )
-                if not self.counter.should_admit(key):
-                    self.metrics.record(Outcome.MISS_BELOW_THRESHOLD, len(sentence))
-                elif not passes_quality(result, sentence):
-                    self.metrics.record(Outcome.MISS_QUALITY_REJECTED, len(sentence))
-                else:
-                    self.storage.put(key, result)
-                    self.metrics.record(Outcome.MISS_STORED, len(sentence))
-                results.append(result)
-
-        return results
+        return [
+            await self._get_or_synthesize(sentence, profile, user_id)
+            for sentence in sentences
+        ]
