@@ -99,6 +99,30 @@ What I found:
 
 So I'd use the same models **offline**: they propose paraphrase pairs, a person approves them, and the live system does a plain lookup. Reviewing 16 pairs takes a few minutes; a reviewer would approve the 14 good ones and reject the 2 bad ones quickly. The review effort grows with the number of distinct pairs, not with traffic. That gets the savings with no wrong answers and no added latency.
 
+Proposed rollout:
+
+```mermaid
+flowchart LR
+    subgraph OFF["Offline, e.g. nightly"]
+        L["Logged sentence templates"] --> SIM["Embedding: find similar pairs"]
+        SIM --> NLI["NLI: same meaning both ways, 95%+ confidence"]
+        NLI --> P["Proposed pairs"]
+        P --> H{"Human review"}
+        H -- approve --> AM[("Alias map")]
+        H -- reject --> X["Dropped"]
+    end
+    subgraph LIVE["Live request"]
+        S["Sentence"] --> LK{"In alias map?"}
+        LK -- yes --> CAN["Use the approved wording"]
+        LK -- no --> SAME["Use the sentence as is"]
+        CAN --> CACHE["Normal cache lookup"]
+        SAME --> CACHE
+    end
+    AM -.-> LK
+```
+
+In the test traffic this would have meant reviewing 16 pairs: approving 14 and rejecting the two that caused all 37 wrong answers.
+
 ## Cache key design
 
 The key is a SHA-256 hash of the exact text sent to TTS plus language, voice, model, settings, output format and namespace. The key and the TTS call are built from the same inputs, so they can't disagree.
