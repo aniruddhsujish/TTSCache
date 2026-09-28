@@ -7,6 +7,7 @@ class Outcome(str, Enum):
     MISS_STORED = "miss_stored"
     MISS_BELOW_THRESHOLD = "miss_below_threshold"
     MISS_QUALITY_REJECTED = "miss_quality_rejected"
+    SEMANTIC_HIT = "semantic_hit"
 
 
 class Metrics:
@@ -19,7 +20,7 @@ class Metrics:
     def record(self, outcome: Outcome, chars: int) -> None:
         self.outcomes[outcome] += 1
         self.chars_requested += chars
-        if outcome == Outcome.HIT:
+        if outcome in (Outcome.HIT, Outcome.SEMANTIC_HIT):
             self.chars_saved += chars
 
     def savings_ratio(self) -> float:

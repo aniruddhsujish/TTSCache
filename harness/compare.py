@@ -1,4 +1,4 @@
-"""Run every strategy over the same traffic and compare TTS savings
+"""Run every strategy over the same traffic and compare TTS savings.
 
 Usage:
     python -m harness.compare
@@ -9,6 +9,7 @@ import argparse
 import asyncio
 import json
 import tempfile
+from functools import partial
 from pathlib import Path
 
 from harness.generate_dataset import DEFAULT_OUTPUT, Request, load
@@ -16,18 +17,15 @@ from tts_cache.coalescing import Coalescer
 from tts_cache.counter import RequestCounter
 from tts_cache.keys import VoiceProfile
 from tts_cache.metrics import Metrics, Outcome
+from tts_cache.semantic import SemanticMatcher
 from tts_cache.storage import FileTier, MemoryTier, TieredStorage
 from tts_cache.strategies.baseline import BaselineStrategy
 from tts_cache.strategies.segment import SegmentStrategy
+from tts_cache.strategies.semantic import SemanticTemplateStrategy
 from tts_cache.strategies.template import TemplateStrategy
 from tts_cache.tts.fake import FakeTTS
 
-STRATEGIES = {
-    "baseline": BaselineStrategy,
-    "segment": SegmentStrategy,
-    "template": TemplateStrategy,
-}
-THRESHOLDS = [1, 2, 5, 10]
+THRESHOLDS = [1, 2, 5, 10, 20]
 HEADLINE_THRESHOLD = 5
 
 PROFILES = {
@@ -40,12 +38,33 @@ PROFILES = {
 }
 
 
-async def run_one_strategy(name: str, requests: list[Request], threshold: int) -> dict:
-    """Run one strategy over the dataset with a fresh cache."""
+def build_strategies() -> dict:
+    """Every strategy the harness compares. Semantic is added only if its models are installed."""
+    strategies = {
+        "baseline": BaselineStrategy,
+        "segment": SegmentStrategy,
+        "template": TemplateStrategy,
+    }
+    try:
+        matcher = SemanticMatcher(
+            sim_threshold=0.85, conf_threshold=0.95
+        )  # loads both models once
+        strategies["semantic"] = partial(SemanticTemplateStrategy, matcher=matcher)
+    except ImportError:
+        print(
+            "(semantic models not installed: pip install -r requirements-semantic.txt; skipping)"
+        )
+    return strategies
+
+
+async def run_one_strategy(
+    name: str, make_strategy, requests: list[Request], threshold: int
+) -> dict:
+    """Run one strategy over all requests with a fresh, empty cache."""
     with tempfile.TemporaryDirectory() as folder:
         tts = FakeTTS(delay=0)
         metrics = Metrics()
-        strategy = STRATEGIES[name](
+        strategy = make_strategy(
             tts,
             TieredStorage(MemoryTier(), FileTier(root=folder)),
             RequestCounter(secret=b"harness", threshold=threshold),
@@ -55,7 +74,7 @@ async def run_one_strategy(name: str, requests: list[Request], threshold: int) -
         for r in requests:
             await strategy.get_audio(r.text, PROFILES[r.language], r.user_id)
 
-    return {
+    row = {
         "strategy": name,
         "threshold": threshold,
         "tts_calls": tts.calls,
@@ -64,11 +83,19 @@ async def run_one_strategy(name: str, requests: list[Request], threshold: int) -
         "savings_pct": round(100 * metrics.savings_ratio(), 1),
         "outcomes": {o.value: metrics.outcomes[o] for o in Outcome},
     }
+    if hasattr(strategy, "semantic_matches"):
+        row["semantic_matches"] = [
+            {"query": q, "matched": m, "count": c}
+            for (q, m), c in strategy.semantic_matches.most_common()
+        ]
+    return row
 
 
 def print_table(rows: list[dict]) -> None:
-    header = f"{'strategy':<10}{'threshold':>10}{'tts calls':>11}{'chars req':>11}{'chars saved':>13}{'savings':>9}"
-
+    header = (
+        f"{'strategy':<10}{'threshold':>10}{'tts calls':>11}"
+        f"{'chars req':>11}{'chars saved':>13}{'savings':>9}"
+    )
     print(header)
     print("-" * len(header))
     for r in rows:
@@ -78,7 +105,20 @@ def print_table(rows: list[dict]) -> None:
         )
 
 
-def draw_chart(rows: list[dict], path: Path) -> None:
+def print_semantic_review(rows: list[dict]) -> None:
+    """Every distinct 'served X instead of Y' decision, for a human to check."""
+    for r in rows:
+        if r["strategy"] == "semantic" and r["threshold"] == HEADLINE_THRESHOLD:
+            matches = r["semantic_matches"]
+            print(
+                f"\nSemantic matches to review @ threshold {HEADLINE_THRESHOLD} "
+                f"({len(matches)} distinct, {r['outcomes']['semantic_hit']} hits):"
+            )
+            for m in matches:
+                print(f"  {m['count']:>4}×  {m['query']}  →  {m['matched']}")
+
+
+def draw_chart(rows: list[dict], names: list[str], path: Path) -> None:
     """Savings (%) against admission threshold, one line per strategy."""
     try:
         import matplotlib
@@ -90,7 +130,7 @@ def draw_chart(rows: list[dict], path: Path) -> None:
         return
 
     fig, ax = plt.subplots(figsize=(7, 4.5))
-    for name in STRATEGIES:
+    for name in names:
         points = [r for r in rows if r["strategy"] == name]
         ax.plot(
             [p["threshold"] for p in points],
@@ -98,10 +138,7 @@ def draw_chart(rows: list[dict], path: Path) -> None:
             marker="o",
             label=name,
         )
-
-    ax.axvline(
-        HEADLINE_THRESHOLD, linestyle="--", color="grey", alpha=0.6
-    )  # mark the chosen threshold
+    ax.axvline(HEADLINE_THRESHOLD, linestyle="--", color="grey", alpha=0.6)
     ax.set_xlabel("Admission threshold (distinct users)")
     ax.set_ylabel("TTS characters saved (%)")
     ax.set_title("TTS savings by strategy and admission threshold")
@@ -115,27 +152,34 @@ def draw_chart(rows: list[dict], path: Path) -> None:
 
 async def main() -> None:
     parser = argparse.ArgumentParser(description="Compare caching strategies.")
-    parser.add_argument("--data", default=DEFAULT_OUTPUT, help="dataset file path")
+    parser.add_argument("--data", default=DEFAULT_OUTPUT, help="traffic JSONL file")
     args = parser.parse_args()
 
     requests = load(args.data)
     print(f"Loaded {len(requests)} requests from {args.data}\n")
 
+    strategies = build_strategies()
     rows = []
-    for name in STRATEGIES:
+    for name, make_strategy in strategies.items():
         for threshold in THRESHOLDS:
-            rows.append(await run_one_strategy(name, requests, threshold))
+            rows.append(
+                await run_one_strategy(name, make_strategy, requests, threshold)
+            )
 
-    print(f"Headline (threshold = {HEADLINE_THRESHOLD})")
+    print(f"Headline (threshold = {HEADLINE_THRESHOLD}):")
     print_table([r for r in rows if r["threshold"] == HEADLINE_THRESHOLD])
 
     print("\nThreshold sweep:")
     print_table(rows)
 
+    print_semantic_review(rows)
+
     out = Path("results")
     out.mkdir(exist_ok=True)
-    (out / "results.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
-    draw_chart(rows, out / "savings_vs_threshold.png")
+    (out / "results.json").write_text(
+        json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    draw_chart(rows, list(strategies), out / "savings_vs_threshold.png")
 
 
 if __name__ == "__main__":

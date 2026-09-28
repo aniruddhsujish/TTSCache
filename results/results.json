@@ -10,7 +10,8 @@
       "hit": 2513,
       "miss_stored": 2487,
       "miss_below_threshold": 0,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -24,7 +25,8 @@
       "hit": 1998,
       "miss_stored": 514,
       "miss_below_threshold": 2488,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -38,7 +40,8 @@
       "hit": 1380,
       "miss_stored": 157,
       "miss_below_threshold": 3463,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -52,7 +55,23 @@
       "hit": 903,
       "miss_stored": 67,
       "miss_below_threshold": 4030,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
+    }
+  },
+  {
+    "strategy": "baseline",
+    "threshold": 20,
+    "tts_calls": 4508,
+    "chars_requested": 421486,
+    "chars_saved": 35997,
+    "savings_pct": 8.5,
+    "outcomes": {
+      "hit": 492,
+      "miss_stored": 28,
+      "miss_below_threshold": 4480,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -66,7 +85,8 @@
       "hit": 10051,
       "miss_stored": 1518,
       "miss_below_threshold": 0,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -80,7 +100,8 @@
       "hit": 9771,
       "miss_stored": 280,
       "miss_below_threshold": 1518,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -94,7 +115,8 @@
       "hit": 9179,
       "miss_stored": 162,
       "miss_below_threshold": 2228,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -108,7 +130,23 @@
       "hit": 8696,
       "miss_stored": 63,
       "miss_below_threshold": 2810,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
+    }
+  },
+  {
+    "strategy": "segment",
+    "threshold": 20,
+    "tts_calls": 3306,
+    "chars_requested": 414917,
+    "chars_saved": 252315,
+    "savings_pct": 60.8,
+    "outcomes": {
+      "hit": 8263,
+      "miss_stored": 37,
+      "miss_below_threshold": 3269,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -122,7 +160,8 @@
       "hit": 11721,
       "miss_stored": 1509,
       "miss_below_threshold": 0,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -136,7 +175,8 @@
       "hit": 11482,
       "miss_stored": 293,
       "miss_below_threshold": 1513,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -150,7 +190,8 @@
       "hit": 10847,
       "miss_stored": 162,
       "miss_below_threshold": 2249,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
   },
   {
@@ -164,7 +205,183 @@
       "hit": 10276,
       "miss_stored": 59,
       "miss_below_threshold": 2832,
-      "miss_quality_rejected": 0
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
     }
+  },
+  {
+    "strategy": "template",
+    "threshold": 20,
+    "tts_calls": 3306,
+    "chars_requested": 414917,
+    "chars_saved": 287375,
+    "savings_pct": 69.3,
+    "outcomes": {
+      "hit": 9677,
+      "miss_stored": 33,
+      "miss_below_threshold": 3273,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 0
+    }
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 1,
+    "tts_calls": 1507,
+    "chars_requested": 414917,
+    "chars_saved": 391567,
+    "savings_pct": 94.4,
+    "outcomes": {
+      "hit": 11555,
+      "miss_stored": 1507,
+      "miss_below_threshold": 0,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 169
+    },
+    "semantic_matches": [
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 81
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 51
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
+        "count": 37
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 2,
+    "tts_calls": 1803,
+    "chars_requested": 414917,
+    "chars_saved": 374096,
+    "savings_pct": 90.2,
+    "outcomes": {
+      "hit": 11237,
+      "miss_stored": 291,
+      "miss_below_threshold": 1512,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 250
+    },
+    "semantic_matches": [
+      {
+        "query": "आपका अनुरोध प्राप्त हो गया है।",
+        "matched": "हमें आपका अनुरोध मिल गया है।",
+        "count": 118
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 81
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 51
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 5,
+    "tts_calls": 2404,
+    "chars_requested": 414917,
+    "chars_saved": 333720,
+    "savings_pct": 80.4,
+    "outcomes": {
+      "hit": 10611,
+      "miss_stored": 160,
+      "miss_below_threshold": 2244,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 247
+    },
+    "semantic_matches": [
+      {
+        "query": "आपका अनुरोध प्राप्त हो गया है।",
+        "matched": "हमें आपका अनुरोध मिल गया है।",
+        "count": 117
+      },
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 80
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 50
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 10,
+    "tts_calls": 2878,
+    "chars_requested": 414917,
+    "chars_saved": 305193,
+    "savings_pct": 73.6,
+    "outcomes": {
+      "hit": 10137,
+      "miss_stored": 57,
+      "miss_below_threshold": 2821,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 161
+    },
+    "semantic_matches": [
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 80
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 50
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
+        "count": 31
+      }
+    ]
+  },
+  {
+    "strategy": "semantic",
+    "threshold": 20,
+    "tts_calls": 3277,
+    "chars_requested": 414917,
+    "chars_saved": 288738,
+    "savings_pct": 69.6,
+    "outcomes": {
+      "hit": 9569,
+      "miss_stored": 31,
+      "miss_below_threshold": 3246,
+      "miss_quality_rejected": 0,
+      "semantic_hit": 156
+    },
+    "semantic_matches": [
+      {
+        "query": "We have shipped your order {NUM}.",
+        "matched": "Your order {NUM} has been shipped.",
+        "count": 80
+      },
+      {
+        "query": "We have received your request.",
+        "matched": "Your request has been received.",
+        "count": 49
+      },
+      {
+        "query": "हमें आपका अनुरोध मिल गया है।",
+        "matched": "आपका अनुरोध प्राप्त हो गया है।",
+        "count": 27
+      }
+    ]
   }
 ]

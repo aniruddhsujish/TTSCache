@@ -28,6 +28,9 @@ class SegmentStrategy:
     def _split_into_cache_units(self, normalized: str, language: str) -> list[str]:
         return split_sentences(normalized, language)
 
+    def _on_stored(self, text: str, profile: VoiceProfile) -> None:
+        """Called after a unit is stored. For a subclass to access"""
+
     async def _get_or_synthesize(
         self, text: str, profile: VoiceProfile, user_id: str
     ) -> TTSResult:
@@ -48,6 +51,7 @@ class SegmentStrategy:
                 self.metrics.record(Outcome.MISS_QUALITY_REJECTED, len(text))
             else:
                 self.storage.put(key, result)
+                self._on_stored(text, profile)
                 self.metrics.record(Outcome.MISS_STORED, len(text))
             return result
 

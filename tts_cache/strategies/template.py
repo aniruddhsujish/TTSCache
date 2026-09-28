@@ -17,6 +17,9 @@ SLOT_PATTERNS = [
 ]
 SLOT_PLACEHOLDER = re.compile(r"\{(?:NUM|DATE|TIME)\}")
 TRAILING_PUNCTUATION = ".,!?।"
+SLOT_WITH_PUNCTUATION = re.compile(
+    r"\{(?:NUM|DATE|TIME)\}([" + re.escape(TRAILING_PUNCTUATION) + r"]*)"
+)
 MAX_VARIABLES = 2
 BYTES_PER_SAMPLE = 2
 
@@ -33,6 +36,11 @@ def slot_type(word: str) -> str | None:
 def slots(template: str) -> list[str]:
     """The placeholders in a template, in order. eg.g ['{NUM}', '{DATE}']"""
     return SLOT_PLACEHOLDER.findall(template)
+
+
+def slot_punctuation(template: str) -> list[str]:
+    """The punctuation right after each placeholder, in order. e.g. ['', '.']"""
+    return SLOT_WITH_PUNCTUATION.findall(template)
 
 
 def find_variables(words: list[str]) -> list[int] | None:
@@ -176,4 +184,5 @@ class TemplateStrategy(SegmentStrategy):
         if self.counter.should_admit(template_key) and passes_quality(result, sentence):
             for i, part in enumerate(slice_fixed_parts(result, positions)):
                 self.storage.put(f"{template_key}:{i}", part)
+            self._on_stored(template_text, profile)
         return result
