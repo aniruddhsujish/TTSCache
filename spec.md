@@ -178,7 +178,7 @@ Before falling through to §5.2, when the exact sentence and its template would 
 - Dataset (`python -m harness.generate_dataset`, fixed seed): 13,000 requests from 2,000 users. 30% are canned
   replies sent word for word (whole-response repeats); the rest are composed. Several wordings
   per intent, near-miss intents side by side, alphanumeric order IDs, varied currency and date formats, customer
-  names, free-form sentences. ~60% English, ~34% Hindi, ~6% Kannada (no rules file, to exercise the
+  names, free-form sentences. ~59% English, ~35% Hindi, ~6% Kannada (no rules file, to exercise the
   language-agnostic defaults). Each request carries one meaning label per sentence.
 - Loads `data/traffic.jsonl`; for each strategy and threshold `[1, 2, 5, 10, 20]`, runs all requests through a fresh
   cache with `FakeTTS(delay=0)`; headline at threshold 5. A voice profile is built for any language in the traffic.

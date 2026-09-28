@@ -43,8 +43,8 @@ its models are installed.
 ### Optional: semantic caching
 
 ```bash
-pip install -r requirements-semantic.txt     # torch, sentence-transformers, transformers (~1–1.5 GB on first use)
-python -m harness.compare                    # now includes semantic; about 4 min on an Apple GPU, longer on CPU only
+pip install -r requirements-semantic.txt     # torch, sentence-transformers, transformers; models download ~2 GB on first use
+python -m harness.compare                    # now includes semantic; a few minutes on an Apple GPU, longer on CPU only
 python -m experiments.semantic_eval          # grades the matcher on 416 labeled pairs
 ```
 
@@ -60,7 +60,7 @@ like an LLM support agent's output.
 - Several phrasings per intent, with near-misses side by side (shipped / delivered, on / by a date).
 - Realistic values (alphanumeric order IDs, ₹ / Rs. / INR amounts, written dates), customer names and free-form
   sentences that rarely repeat.
-- 60% English, 34% Hindi (including some Hinglish), 6% Kannada. Kannada has no language rules file, to show that
+- 59% English, 35% Hindi (including some Hinglish), 6% Kannada. Kannada has no language rules file, to show that
   an unconfigured language still works.
 - Every sentence carries a meaning label.
 
