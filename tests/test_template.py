@@ -10,6 +10,11 @@ from tts_cache.strategies.template import (
 )
 from tts_cache.tts.fake import FakeTTS
 from tts_cache.keys import VoiceProfile
+from tts_cache.coalescing import Coalescer
+from tts_cache.counter import RequestCounter
+from tts_cache.metrics import Metrics
+from tts_cache.storage import FileTier, MemoryTier, TieredStorage
+from tts_cache.strategies.template import TemplateStrategy
 
 PROFILE = VoiceProfile(language="en", voice="v1", model="m1", output_format="pcm_16000")
 
@@ -91,3 +96,58 @@ async def test_slice_then_join_rebuilds_the_original_sentence():
         "shipped.",
     ]
     assert rebuilt.timestamps[3].start == pytest.approx(0.9)
+
+
+# --------------Template Strategy tests----------------------#
+
+
+def build_template(tmp_path):
+    tts = FakeTTS(delay=0)
+    strategy = TemplateStrategy(
+        tts,
+        TieredStorage(MemoryTier(), FileTier(root=str(tmp_path))),
+        RequestCounter(secret=b"test", threshold=1),
+        Coalescer(),
+        Metrics(),
+    )
+    return strategy, tts
+
+
+@pytest.mark.asyncio
+async def test_new_build_only_synthesizes_the_number_on_cache_hit(tmp_path):
+    strategy, tts = build_template(tmp_path)
+
+    await strategy.get_audio("your order 4521 has shipped.", PROFILE, "user1")
+    assert tts.calls == 1
+
+    [result] = await strategy.get_audio(
+        "Your order 7788 has shipped.", PROFILE, "user2"
+    )
+    assert tts.calls == 2
+    assert [ts.word for ts in result.timestamps] == [
+        "Your",
+        "order",
+        "7788",
+        "has",
+        "shipped.",
+    ]
+
+
+@pytest.mark.asyncio
+async def test_repeated_number_is_itself_cached(tmp_path):
+    strategy, tts = build_template(tmp_path)
+
+    await strategy.get_audio("Your order 4521 has shipped.", PROFILE, "user1")
+    await strategy.get_audio("Your order 7788 has shipped.", PROFILE, "user2")
+    await strategy.get_audio("Your order 7788 has shipped.", PROFILE, "user3")
+    assert tts.calls == 2
+
+
+@pytest.mark.asyncio
+async def test_too_many_numbers_never_uses_a_template(tmp_path):
+    strategy, tts = build_template(tmp_path)
+
+    await strategy.get_audio("Order 1 of 2 costs 45,230.50 rupees.", PROFILE, "user1")
+    await strategy.get_audio("Order 3 of 4 costs 199 rupees.", PROFILE, "user2")
+
+    assert tts.calls == 2

@@ -19,9 +19,14 @@ from tts_cache.metrics import Metrics, Outcome
 from tts_cache.storage import FileTier, MemoryTier, TieredStorage
 from tts_cache.strategies.baseline import BaselineStrategy
 from tts_cache.strategies.segment import SegmentStrategy
+from tts_cache.strategies.template import TemplateStrategy
 from tts_cache.tts.fake import FakeTTS
 
-STRATEGIES = {"baseline": BaselineStrategy, "segment": SegmentStrategy}
+STRATEGIES = {
+    "baseline": BaselineStrategy,
+    "segment": SegmentStrategy,
+    "template": TemplateStrategy,
+}
 THRESHOLDS = [1, 2, 5, 10, 20]
 HEADLINE_THRESHOLD = 5
 

@@ -1,6 +1,11 @@
 import re
 
-from tts_cache.tts.fake import TTSResult, WordTimestamp
+from tts_cache.tts.base import TTSResult, WordTimestamp
+from tts_cache.keys import VoiceProfile, build_key
+from tts_cache.metrics import Outcome
+from tts_cache.normalize import normalize
+from tts_cache.quality import passes_quality
+from tts_cache.strategies.segment import SegmentStrategy
 
 NUMBER = re.compile(r"^[\d,]+(?:\.\d+)?$")
 TRAILING_PUNCTUATION = ".,!?।"
@@ -101,3 +106,56 @@ def interleave(fixed: list[TTSResult], variables: list[TTSResult]) -> list[TTSRe
         pieces.append(var)
     pieces.append(fixed[-1])
     return pieces
+
+
+class TemplateStrategy(SegmentStrategy):
+
+    def _load_parts(self, template_key: str, count: int) -> list[TTSResult] | None:
+        """All fixed parts, or None if any one is missing."""
+        parts = [self.storage.get(f"{template_key}:{i}") for i in range(count)]
+        return None if any(p is None for p in parts) else parts
+
+    async def get_audio(
+        self, text: str, profile: VoiceProfile, user_id: str
+    ) -> list[TTSResult]:
+        normalized = normalize(text, profile.language)
+        sentences = self._split_into_cache_units(normalized, profile.language)
+        return [await self._resolve_sentence(s, profile, user_id) for s in sentences]
+
+    async def _resolve_sentence(
+        self, sentence: str, profile: VoiceProfile, user_id: str
+    ) -> TTSResult:
+        words = sentence.split()
+        positions = find_variables(words)
+
+        # 1. No variables found, default sentence level caching
+        if positions is None:
+            return await self._get_or_synthesize(sentence, profile, user_id)
+
+        # 2. Variable found but exact sentence cached before
+        exact = self.storage.get(build_key(sentence, profile))
+        if exact is not None:
+            self.metrics.record(Outcome.HIT, len(sentence))
+            return exact
+
+        # Template level caching
+        template_text, values = make_template(words, positions)
+        template_key = build_key("[template] " + template_text, profile)
+        self.counter.record(template_key, user_id)
+
+        # 3. Template hit -> reuse the fixed parts and run the numbers thru the cache
+        fixed = self._load_parts(template_key, len(positions) + 1)
+        if fixed is not None:
+            fixed_chars = len(sentence) - sum(len(v) for v in values)
+            self.metrics.record(Outcome.HIT, fixed_chars)
+            variables = [
+                await self._get_or_synthesize(v, profile, user_id) for v in values
+            ]
+            return join(interleave(fixed, variables))
+
+        # 4. template miss -> synthesize the full sentence and store fixed parts in the cache if crossing admission threshold
+        result = await self._get_or_synthesize(sentence, profile, user_id)
+        if self.counter.should_admit(template_key) and passes_quality(result, sentence):
+            for i, part in enumerate(slice_fixed_parts(result, positions)):
+                self.storage.put(f"{template_key}:{i}", part)
+        return result

@@ -138,5 +138,75 @@
       "miss_below_threshold": 3228,
       "miss_quality_rejected": 0
     }
+  },
+  {
+    "strategy": "template",
+    "threshold": 1,
+    "tts_calls": 1439,
+    "chars_requested": 417197,
+    "chars_saved": 394660,
+    "savings_pct": 94.6,
+    "outcomes": {
+      "hit": 11663,
+      "miss_stored": 1439,
+      "miss_below_threshold": 0,
+      "miss_quality_rejected": 0
+    }
+  },
+  {
+    "strategy": "template",
+    "threshold": 2,
+    "tts_calls": 1719,
+    "chars_requested": 417197,
+    "chars_saved": 377483,
+    "savings_pct": 90.5,
+    "outcomes": {
+      "hit": 11442,
+      "miss_stored": 277,
+      "miss_below_threshold": 1442,
+      "miss_quality_rejected": 0
+    }
+  },
+  {
+    "strategy": "template",
+    "threshold": 5,
+    "tts_calls": 2345,
+    "chars_requested": 417197,
+    "chars_saved": 335464,
+    "savings_pct": 80.4,
+    "outcomes": {
+      "hit": 10829,
+      "miss_stored": 179,
+      "miss_below_threshold": 2166,
+      "miss_quality_rejected": 0
+    }
+  },
+  {
+    "strategy": "template",
+    "threshold": 10,
+    "tts_calls": 2830,
+    "chars_requested": 417197,
+    "chars_saved": 306762,
+    "savings_pct": 73.5,
+    "outcomes": {
+      "hit": 10267,
+      "miss_stored": 61,
+      "miss_below_threshold": 2769,
+      "miss_quality_rejected": 0
+    }
+  },
+  {
+    "strategy": "template",
+    "threshold": 20,
+    "tts_calls": 3270,
+    "chars_requested": 417197,
+    "chars_saved": 289060,
+    "savings_pct": 69.3,
+    "outcomes": {
+      "hit": 9676,
+      "miss_stored": 34,
+      "miss_below_threshold": 3236,
+      "miss_quality_rejected": 0
+    }
   }
 ]
