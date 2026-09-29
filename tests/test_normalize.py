@@ -47,3 +47,7 @@ def test_layer_one_still_runs_for_hindi():
 
 def test_sentence_ending_dot_is_not_swallowed():
     assert normalize("Pay Rs. 500.", "hi") == "Pay 500 रुपये."
+
+
+def test_currency_symbol_not_in_the_middle_of_word():
+    assert normalize("The HRs 5 to 7 team.", "en") == "The HRs 5 to 7 team."

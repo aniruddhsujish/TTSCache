@@ -30,7 +30,7 @@ def build_currency_pattern(rules: dict) -> str:
     variants = sorted(variants, key=len, reverse=True)
     escaped = [re.escape(v) for v in variants]
     alternatives = "|".join(escaped)
-    return rf"(?:{alternatives})\s*([\d,]+(?:\.\d+)?)"
+    return rf"(?<!\w)(?:{alternatives})\s*([\d,]+(?:\.\d+)?)"
 
 
 def apply_lang_rules(text: str, rules: dict) -> str:
