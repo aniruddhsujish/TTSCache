@@ -7,7 +7,7 @@ BYTES_PER_SAMPLE = 2
 
 def duration_seconds(result: TTSResult) -> float:
     """Returns duration of the audio sample"""
-    return len(result.audio) / (result.sample_rate * 2)
+    return len(result.audio) / (result.sample_rate * BYTES_PER_SAMPLE)
 
 
 def passes_quality(result: TTSResult, text: str) -> bool:

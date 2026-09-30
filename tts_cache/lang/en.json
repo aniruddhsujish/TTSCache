@@ -4,5 +4,5 @@
     "variants": ["₹", "Rs.", "Rs", "INR"]
   },
   "terminators": [".", "?", "!"],
-  "abbreviations": ["Dr.", "Mr.", "Mrs.", "Ms.", "No.", "Sr.", "Jr.", "St.", "vs.", "etc.", "e.g.", "i.e.", "a.m.", "p.m.", "Rs.", "रु."]
+  "abbreviations": ["Dr.", "dr.", "Mr.", "Mrs.", "Ms.", "No.", "Sr.", "Jr.", "St.", "vs.", "etc.", "e.g.", "i.e.", "a.m.", "p.m.", "Rs.", "रु."]
 }

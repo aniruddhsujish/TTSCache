@@ -641,7 +641,10 @@ OPENERS = [
                 "Hi, thanks for reaching out.",
                 "Thank you for contacting us.",
             ],
-            "hi": ["नमस्ते, कॉल करने के लिए धन्यवाद।", "हमसे संपर्क करने के लिए धन्यवाद।"],
+            "hi": [
+                "नमस्ते, कॉल करने के लिए धन्यवाद।",
+                "हमसे संपर्क करने के लिए धन्यवाद।",
+            ],
             "kn": ["ನಮಸ್ಕಾರ, ಕರೆ ಮಾಡಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು."],
         },
     ),
@@ -683,7 +686,10 @@ OPENERS = [
         "thanks_patience:{name}",
         12,
         {
-            "en": ["Thanks for your patience, {name}.", "Thank you for waiting, {name}."],
+            "en": [
+                "Thanks for your patience, {name}.",
+                "Thank you for waiting, {name}.",
+            ],
             "hi": ["धन्यवाद, {name} जी।"],
             "kn": ["ಧನ್ಯವಾದಗಳು, {name}."],
         },
@@ -765,7 +771,10 @@ SCRIPTED = {
             ("Please try again.", "please_try_again"),
         ],
         [("Our support team is available on weekdays.", "support_weekdays")],
-        [("Welcome back.", "welcome_back"), ("How can I help you today?", "greeting_help")],
+        [
+            ("Welcome back.", "welcome_back"),
+            ("How can I help you today?", "greeting_help"),
+        ],
     ],
     "hi": [
         [("कृपया प्रतीक्षा करें, मैं जाँच कर रहा हूँ।", "hold_checking")],
@@ -856,10 +865,41 @@ DETAILS = {
 
 NAMES = {
     "en": [
-        "Priya", "Rahul", "Ananya", "Arjun", "Sneha", "Vikram", "Divya", "Karthik", "Meera", "Rohan",
-        "Aisha", "Suresh", "Kavya", "Nikhil", "Pooja", "Amit", "Neha", "Sanjay", "Lakshmi", "Farhan",
+        "Priya",
+        "Rahul",
+        "Ananya",
+        "Arjun",
+        "Sneha",
+        "Vikram",
+        "Divya",
+        "Karthik",
+        "Meera",
+        "Rohan",
+        "Aisha",
+        "Suresh",
+        "Kavya",
+        "Nikhil",
+        "Pooja",
+        "Amit",
+        "Neha",
+        "Sanjay",
+        "Lakshmi",
+        "Farhan",
     ],
-    "hi": ["प्रिया", "राहुल", "अनन्या", "अर्जुन", "स्नेहा", "विक्रम", "दिव्या", "अमित", "नेहा", "संजय", "पूजा", "रोहन"],
+    "hi": [
+        "प्रिया",
+        "राहुल",
+        "अनन्या",
+        "अर्जुन",
+        "स्नेहा",
+        "विक्रम",
+        "दिव्या",
+        "अमित",
+        "नेहा",
+        "संजय",
+        "पूजा",
+        "रोहन",
+    ],
     "kn": ["ಪ್ರಿಯಾ", "ರಾಹುಲ್", "ಅನನ್ಯಾ", "ಕಾರ್ತಿಕ್", "ಮೇಘನಾ", "ಸುರೇಶ್"],
 }
 
@@ -869,7 +909,20 @@ MONTHS = {
     "kn": ["ಜನವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಜೂನ್", "ಆಗಸ್ಟ್", "ಅಕ್ಟೋಬರ್", "ಡಿಸೆಂಬರ್"],
 }
 
-PRICES = ["199", "299", "349", "499", "599", "799", "999", "1,299", "1,499", "2,499", "3,999", "12,999"]
+PRICES = [
+    "199",
+    "299",
+    "349",
+    "499",
+    "599",
+    "799",
+    "999",
+    "1,299",
+    "1,499",
+    "2,499",
+    "3,999",
+    "12,999",
+]
 
 
 def fill_values(rng: random.Random, language: str) -> dict[str, str]:
@@ -882,7 +935,13 @@ def fill_values(rng: random.Random, language: str) -> dict[str, str]:
 
     price = rng.choice(PRICES)
     currency_forms = {
-        "en": [f"₹{price}", f"Rs. {price}", f"Rs {price}", f"INR {price}", f"{price} rupees"],
+        "en": [
+            f"₹{price}",
+            f"Rs. {price}",
+            f"Rs {price}",
+            f"INR {price}",
+            f"{price} rupees",
+        ],
         "hi": [f"₹{price}", f"{price} रुपये", f"Rs. {price}"],
         "kn": [f"₹{price}", f"{price} ರೂಪಾಯಿ"],
     }
@@ -943,16 +1002,20 @@ def pick_detail(rng, language) -> tuple[str, str]:
     return text, f"detail:{product}|{status}|{step}"
 
 
-
-
 def check_alignment(request: Request) -> None:
     """Every label must line up with exactly one sentence as the cache will split it."""
-    sentences = split_sentences(normalize(request.text, request.language), request.language)
+    sentences = split_sentences(
+        normalize(request.text, request.language), request.language
+    )
     if len(sentences) != len(request.meanings):
-        raise ValueError(f"{len(sentences)} sentences, {len(request.meanings)} labels: {request.text}")
+        raise ValueError(
+            f"{len(sentences)} sentences, {len(request.meanings)} labels: {request.text}"
+        )
 
 
-def generate(n_requests: int = 13000, n_users: int = 2000, seed: int = 11) -> list[Request]:
+def generate(
+    n_requests: int = 13000, n_users: int = 2000, seed: int = 11
+) -> list[Request]:
     rng = random.Random(seed)
     languages, shares = zip(*LANGUAGE_SHARE.items())
     requests = []
@@ -970,7 +1033,9 @@ def generate(n_requests: int = 13000, n_users: int = 2000, seed: int = 11) -> li
                 if rng.random() < 0.25:
                     parts.append(pick_detail(rng, language))
                 else:
-                    parts.append(pick_intent(rng, language, exclude={m for _, m in parts}))
+                    parts.append(
+                        pick_intent(rng, language, exclude={m for _, m in parts})
+                    )
             if rng.random() < 0.5:
                 parts.append(pick_weighted(rng, CLOSERS, language))
 

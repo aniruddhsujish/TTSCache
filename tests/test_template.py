@@ -82,6 +82,13 @@ def test_time_becomes_a_time_slot():
     )
 
 
+def test_percent_becomes_a_percent_slot():
+    words = "You get 15% off today.".split()
+    assert (
+        make_template(words, find_variables(words))[0] == "You get {PERCENT} off today."
+    )
+
+
 def test_number_and_date_in_one_sentence():
     words = "Your order 4521 arrives on 12/03/2026.".split()
     assert (

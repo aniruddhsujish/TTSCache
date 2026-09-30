@@ -23,6 +23,7 @@ async def test_concurrent_misses_make_one_tts_call():
     )
 
     assert tts.calls == 1
+    assert coalescer.coalesced == 49
     assert all(r == results[0] for r in results)
     assert coalescer.in_flight == {}
 
@@ -37,6 +38,7 @@ async def test_slow_leader_waiters_fall_back_after_timeout():
         coalescer.run("k1", lambda: tts.synthesize("hello", PROFILE)),
     )
 
+    assert coalescer.coalesced == 0
     assert tts.calls == 2
 
 

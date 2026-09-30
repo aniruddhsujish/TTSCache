@@ -13,6 +13,7 @@ class Coalescer:
     def __init__(self, wait_timeout: float = 1.0):
         self.wait_timeout = wait_timeout
         self.in_flight: dict[str, asyncio.Future] = {}
+        self.coalesced = 0
 
     async def run(
         self, key: str, make_call: Callable[[], Awaitable[TTSResult]]
@@ -23,9 +24,11 @@ class Coalescer:
         existing = self.in_flight.get(key)
         if existing is not None:
             try:
-                return await asyncio.wait_for(
+                result = await asyncio.wait_for(
                     asyncio.shield(existing), timeout=self.wait_timeout
                 )
+                self.coalesced += 1
+                return result
             except (asyncio.TimeoutError, LeaderCancelled):
                 return await make_call()
 

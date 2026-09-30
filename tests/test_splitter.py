@@ -34,3 +34,8 @@ def test_default_lang_no_rules():
 def test_space_before_terminator():
     result = split_sentences("आपका ऑर्डर आ गया । धन्यवाद।", "hi")
     assert result == ["आपका ऑर्डर आ गया ।", "धन्यवाद।"]
+
+
+def test_edge_case_lower_case_abbreviation():
+    result = split_sentences("Please visit dr. X. He is available.", "en")
+    assert result == ["Please visit dr. X.", "He is available."]

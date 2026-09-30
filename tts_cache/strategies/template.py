@@ -8,6 +8,7 @@ from tts_cache.quality import passes_quality
 from tts_cache.strategies.segment import SegmentStrategy
 
 SLOT_PATTERNS = [
+    ("PERCENT", re.compile(r"^\d+(?:\.\d+)?%$")),
     (
         "DATE",
         re.compile(r"^\d{1,4}[/.-]\d{1,2}[/.-]\d{1,4}$"),
@@ -15,10 +16,10 @@ SLOT_PATTERNS = [
     ("TIME", re.compile(r"^\d{1,2}:\d{2}$")),  # 5:30, 17:45
     ("NUM", re.compile(r"^[\d,]+(?:\.\d+)?$")),  # 4521, 45,230.50
 ]
-SLOT_PLACEHOLDER = re.compile(r"\{(?:NUM|DATE|TIME)\}")
+SLOT_PLACEHOLDER = re.compile(r"\{(?:NUM|DATE|TIME|PERCENT)\}")
 TRAILING_PUNCTUATION = ".,!?।"
 SLOT_WITH_PUNCTUATION = re.compile(
-    r"\{(?:NUM|DATE|TIME)\}([" + re.escape(TRAILING_PUNCTUATION) + r"]*)"
+    r"\{(?:NUM|DATE|TIME|PERCENT)\}([" + re.escape(TRAILING_PUNCTUATION) + r"]*)"
 )
 MAX_VARIABLES = 2
 BYTES_PER_SAMPLE = 2
